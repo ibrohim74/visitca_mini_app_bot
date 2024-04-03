@@ -7,6 +7,8 @@ const HomePage = () => {
         <div>
             home
             <button onClick={tg.CloudStorage.removeItem('token')}>ufgf</button>
+            <br/>
+            {tg.CloudStorage.getItem('token')}
         </div>
     );
 };
