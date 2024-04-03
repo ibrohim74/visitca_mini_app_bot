@@ -1,7 +1,6 @@
 import axios from "axios";
 import {LOGIN} from "../consts";
-import {useTelegram} from "../../hooks/useTelegram";
-const {tg} = useTelegram()
+const tg = window.Telegram.WebApp
 let authToken = tg.CloudStorage.getItem("token");
 
 const baseURL = "https://ip-45-137-148-81-100178.vps.hosted-by-mvps.net/api/";

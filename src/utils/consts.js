@@ -1,8 +1,7 @@
-import {useTelegram} from "../hooks/useTelegram";
 
 let HOME_PAGE;
 let LOGIN;
-const {tg} = useTelegram()
+const tg = window.Telegram.WebApp
 
 const token = tg.CloudStorage.getItem('token');
 if (token) {

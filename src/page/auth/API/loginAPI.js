@@ -1,6 +1,5 @@
 import {$host} from "../../../utils/http/http";
-import {useTelegram} from "../../../hooks/useTelegram";
-const {tg} = useTelegram()
+const tg = window.Telegram.WebApp
 export const LoginAPI = async (data)=>{
     try {
         const res = await $host.post("login", data);
