@@ -19,6 +19,14 @@ const Login = () => {
         }
     }
 
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', handleSend)
+        return ()=>{
+            tg.offEvent('mainButtonClicked' , handleSend)
+        }
+    }, []);
+
+
     useEffect(()=>{
         tg.MainButton.setParams({
             text: 'Login'
