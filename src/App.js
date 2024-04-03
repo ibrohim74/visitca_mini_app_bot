@@ -11,11 +11,10 @@ import { BOT } from "./utils/routes";
 function App() {
     const tg = window.Telegram.WebApp
     const token = tg.CloudStorage.getItem("token");
-    console.log(token);
     return (
         <BrowserRouter>
             <Routes>
-                {token !== null ? (
+                {token ? (
                     BOT.map(({ path, component }) => (
                         <Route key={path} path={path} element={component} />
                     ))
