@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {$host} from "../../utils/http/http";
 import {useTelegram} from "../../hooks/useTelegram";
 
@@ -7,10 +7,10 @@ const Login = () => {
         login: '',
         password: ''
     })
-    const {onToggleButtonTg , tgUser} = useTelegram()
+    const {tgUser , tg} = useTelegram()
 
     const handleSend = async () => {
-        onToggleButtonTg()
+
         if (initial?.login && initial?.password){
             try {
                 const res = await $host.post("login", initial);
@@ -22,6 +22,20 @@ const Login = () => {
             }
         }
     }
+
+    useEffect(()=>{
+        tg.MainButton.setParams({
+            text: 'Login'
+        })
+    },[])
+
+    useEffect(()=>{
+        if (!initial?.login && !initial?.password){
+            tg.MainButton.hide()
+        }else {
+            tg.MainButton.show()
+        }
+    },[initial?.login , initial?.password])
     return (
         <div>
             <input type="text" onChange={e=>setInitial({...initial , login: e.target.value})}/>
