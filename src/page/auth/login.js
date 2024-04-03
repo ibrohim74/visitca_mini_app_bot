@@ -3,14 +3,10 @@ import {$host} from "../../utils/http/http";
 import {useTelegram} from "../../hooks/useTelegram";
 
 const Login = () => {
-    const [initial , setInitial] = useState({
-        login: '',
-        password: ''
-    })
+    const [initial , setInitial] = useState()
     const {tgUser , tg} = useTelegram()
 
     const handleSend = async () => {
-
         if (initial?.login && initial?.password){
             try {
                 const res = await $host.post("login", initial);
@@ -36,6 +32,7 @@ const Login = () => {
             tg.MainButton.show()
         }
     },[initial?.login , initial?.password])
+
     return (
         <div>
             <input type="text" onChange={e=>setInitial({...initial , login: e.target.value})}/>
