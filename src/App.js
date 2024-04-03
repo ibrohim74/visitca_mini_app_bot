@@ -1,11 +1,29 @@
 import './App.css';
+import {
+    BrowserRouter,
+    Route,
+    Routes,
+} from "react-router-dom";
+import { LOGIN } from "./utils/consts";
+import Login from "./page/auth/login";
+import { BOT } from "./utils/routes";
 
 function App() {
-  return (
-    <div className="App">
-work
-    </div>
-  );
+    const token = localStorage.getItem("token");
+    console.log(token);
+    return (
+        <BrowserRouter>
+            <Routes>
+                {token !== null ? (
+                    BOT.map(({ path, component }) => (
+                        <Route key={path} path={path} element={component} />
+                    ))
+                ) : (
+                    <Route path={LOGIN} element={<Login />} />
+                )}
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;
