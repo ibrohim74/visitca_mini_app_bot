@@ -7,9 +7,9 @@ import {
 import { LOGIN } from "./utils/consts";
 import Login from "./page/auth/login";
 import { BOT } from "./utils/routes";
-import {useTelegram} from "./hooks/useTelegram";
-const {tg}= useTelegram()
+
 function App() {
+    const tg = window.Telegram.WebApp
     const token = tg.CloudStorage.getItem("token");
     console.log(token);
     return (
