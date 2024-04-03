@@ -1,30 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {$host} from "../../utils/http/http";
 import {useTelegram} from "../../hooks/useTelegram";
+import {LoginAPI} from "./API/loginAPI";
 
 const Login = () => {
     const [initial , setInitial] = useState()
     const {tgUser , tg} = useTelegram()
 
-    const handleSend = async () => {
+    const handleSend = useCallback(()=>{
         if (initial?.login && initial?.password){
-            try {
-                const res = await $host.post("login", initial);
-                localStorage.setItem("token", res.data.access_token);
-                console.log(res.data);
-                return res.data.access_token;
-            } catch (e) {
-                console.log(e)
-            }
+            LoginAPI(initial)
         }
-    }
+    })
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', handleSend)
         return ()=>{
             tg.offEvent('mainButtonClicked' , handleSend)
         }
-    }, []);
+    }, [handleSend]);
 
 
     useEffect(()=>{
