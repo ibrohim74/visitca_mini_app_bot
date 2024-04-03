@@ -3,7 +3,7 @@ const tg = window.Telegram.WebApp
 export const LoginAPI = async (data)=>{
     try {
         const res = await $host.post("login", data);
-        tg.CloudStorage.setItem("token", res.data.access_token);
+        window.localStorage.setItem("token", res.data.access_token);
         console.log(res.data);
         return res.data.access_token;
     } catch (e) {

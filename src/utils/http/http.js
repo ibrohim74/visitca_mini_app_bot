@@ -1,7 +1,7 @@
 import axios from "axios";
 import {LOGIN} from "../consts";
 const tg = window.Telegram.WebApp
-let authToken = tg.CloudStorage.getItem("token");
+let authToken = window.localStorage.getItem("token");
 
 const baseURL = "https://ip-45-137-148-81-100178.vps.hosted-by-mvps.net/api/";
 
@@ -18,7 +18,7 @@ const updateAuthHeader = (token) => {
 };
 
 const RefreshToken = async () => {
-    const JWT = tg.CloudStorage.getItem("token");
+    const JWT = window.localStorage.getItem("token");
     console.log(JWT);
     try {
         const response = await axios.post(
@@ -33,13 +33,13 @@ const RefreshToken = async () => {
         console.log(response);
 
         authToken = response.data.access_token;
-        tg.CloudStorage.setItem("token", authToken);
+        window.localStorage.setItem("token", authToken);
 
         updateAuthHeader(authToken);
     } catch (error) {
         console.error("Token yangilash muvaffaqiyatsiz bo'ldi:", error);
 
-        tg.CloudStorage.removeItem("token");
+        window.localStorage.removeItem("token");
         window.location.assign(LOGIN);
 
     }
@@ -70,7 +70,7 @@ $host.interceptors.response.use(
     (response) => response,
     async (error) => {
         if (error.response?.status === 404) {
-            tg.CloudStorage.removeItem('token')
+            window.localStorage.removeItem('token')
             window.location.reload()
         }
         return Promise.reject(error);
