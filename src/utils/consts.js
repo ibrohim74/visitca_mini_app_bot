@@ -1,8 +1,10 @@
+import {useTelegram} from "../hooks/useTelegram";
+
 let HOME_PAGE;
 let LOGIN;
+const {tg} = useTelegram()
 
-const token = localStorage.getItem('token');
-
+const token = tg.CloudStorage.getItem('token');
 if (token) {
     HOME_PAGE = '/';
     LOGIN = '/login';

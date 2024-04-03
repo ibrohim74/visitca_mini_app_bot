@@ -1,7 +1,8 @@
 import axios from "axios";
 import {LOGIN} from "../consts";
-
-let authToken = localStorage.getItem("token");
+import {useTelegram} from "../../hooks/useTelegram";
+const {tg} = useTelegram()
+let authToken = tg.CloudStorage.getItem("token");
 
 const baseURL = "https://ip-45-137-148-81-100178.vps.hosted-by-mvps.net/api/";
 
@@ -18,7 +19,7 @@ const updateAuthHeader = (token) => {
 };
 
 const RefreshToken = async () => {
-    const JWT = localStorage.getItem("token");
+    const JWT = tg.CloudStorage.getItem("token");
     console.log(JWT);
     try {
         const response = await axios.post(
@@ -33,13 +34,13 @@ const RefreshToken = async () => {
         console.log(response);
 
         authToken = response.data.access_token;
-        localStorage.setItem("token", authToken);
+        tg.CloudStorage.setItem("token", authToken);
 
         updateAuthHeader(authToken);
     } catch (error) {
         console.error("Token yangilash muvaffaqiyatsiz bo'ldi:", error);
 
-        window.localStorage.removeItem("token");
+        tg.CloudStorage.removeItem("token");
         window.location.assign(LOGIN);
 
     }
@@ -70,7 +71,7 @@ $host.interceptors.response.use(
     (response) => response,
     async (error) => {
         if (error.response?.status === 404) {
-            window.localStorage.clear()
+            tg.CloudStorage.removeItem('token')
             window.location.reload()
         }
         return Promise.reject(error);
