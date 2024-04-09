@@ -31,13 +31,7 @@ function App() {
         //         )}
         //     </Routes>
         // </BrowserRouter>
-<>{token}
-asdasd
-    <br/>
-    {tokenParam}
-
-    <br/>
-
+<>
     {urlParams}
 </>
     );
