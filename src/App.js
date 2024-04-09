@@ -16,21 +16,18 @@ function App() {
 
 
     return (
-        // <BrowserRouter>
-        //     <Routes>
-        //         {urlParams ? (
-        //             BOT.map(({ path, component }) => (
-        //                 <Route key={path} path={path} element={component} />
-        //             ))
-        //         ) : (
-        //             <>no token</>
-        //         )}
-        //     </Routes>
-        // </BrowserRouter>
-<>
-    {token}
+        <BrowserRouter>
+            <Routes>
+                {token ? (
+                    BOT.map(({ path, component }) => (
+                        <Route key={path} path={path} element={component} />
+                    ))
+                ) : (
+                    <>no token</>
+                )}
+            </Routes>
+        </BrowserRouter>
 
-</>
     );
 }
 
