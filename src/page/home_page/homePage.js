@@ -38,6 +38,18 @@ const HomePage = () => {
                     <p>{user?.phone_number}</p>
                 </div>}
             </div>
+
+            <div className={style.section_homePage_buttons}>
+                <div className={style.section_homePage_buttons_item}>
+                    Заявки
+                </div>
+                <div className={style.section_homePage_buttons_item}>
+                    Бронированые
+                </div>
+                <div className={style.section_homePage_buttons_item}>
+                    Статистика
+                </div>
+            </div>
         </div>
     );
 };

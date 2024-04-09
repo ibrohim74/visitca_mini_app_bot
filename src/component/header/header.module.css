@@ -3,6 +3,7 @@
     width: 100%;
     justify-content: center;
     align-items: center;
+    padding: 13px 0 ;
 }
 .headerBox svg{
     display: inline-block;

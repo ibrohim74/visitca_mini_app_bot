@@ -27,7 +27,7 @@ function App() {
                         <Route key={path} path={path} element={component} />
                     ))
                 ) : (
-                    <>no token</>
+                    tg.close()
                 )}
             </Routes>
         </BrowserRouter>
