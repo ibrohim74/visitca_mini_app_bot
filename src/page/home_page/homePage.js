@@ -18,11 +18,13 @@ const HomePage = () => {
             }
         })
     },[])
+    const currentUrl = window.location.href;
     const urlParams = new URLSearchParams(window.location.search);
     return (
         <div className={'container'} style={{display:'flex' , justifyContent:"center" , alignItems:'center' ,
         flexDirection:"column"
         }}>
+            {currentUrl}
             <Header/>
             <div className={style.section_profile}>
                 <div className={style.section_profile__photo}>

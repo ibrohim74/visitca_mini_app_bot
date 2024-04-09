@@ -32,8 +32,6 @@ function App() {
                 )}
             </Routes>
         </BrowserRouter>
-
-            {currentUrl}
     </>
 
     );
