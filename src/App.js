@@ -18,7 +18,7 @@ function App() {
         tg.expand()
     },[])
 
-    return (
+    return (<>
         <BrowserRouter>
             <Routes>
 
@@ -31,6 +31,10 @@ function App() {
                 )}
             </Routes>
         </BrowserRouter>
+
+            {urlParams} <br/>
+            {token}
+    </>
 
     );
 }
