@@ -12,11 +12,6 @@ function App() {
     // URL'dan parametrlarni olish
     const urlParams = new URLSearchParams(window.location.search);
 
-// "tgWebAppStartParam" parametri orqali token sozini olib tashlash
-    const tokenParam = urlParams.get('tgWebAppStartParam');
-
-// Token sozini olish
-    const token = tokenParam.split('=')[1]; // '=' belgisidan keyin kelgan qismini olib tashlash
 
 
     return (
@@ -33,6 +28,7 @@ function App() {
         // </BrowserRouter>
 <>
     {urlParams}
+
 </>
     );
 }
