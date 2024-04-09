@@ -10,7 +10,6 @@ import {BOOKINGS_PAGE, REQUESTS_PAGE, STAT_PAGE} from "../../utils/consts";
 
 const HomePage = () => {
     const [user , setUser] = useState()
-    const params = useParams()
     useEffect(()=>{
         GetCurrentUser().then(r=>{
             if (r.status === 200){
@@ -24,7 +23,7 @@ const HomePage = () => {
         <div className={'container'} style={{display:'flex' , justifyContent:"center" , alignItems:'center' ,
         flexDirection:"column"
         }}>
-            {params}
+
             <Header/>
             <div className={style.section_profile}>
                 <div className={style.section_profile__photo}>
