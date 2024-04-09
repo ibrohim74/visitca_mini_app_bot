@@ -9,7 +9,7 @@ import { BOT } from "./utils/routes";
 
 function App() {
     const tg = window.Telegram.WebApp
-    const urlParams = new URLSearchParams(window.location.search);
+     const urlParams = new URLSearchParams(window.location.search);
 
     return (
         <BrowserRouter>

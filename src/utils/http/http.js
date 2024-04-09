@@ -1,9 +1,8 @@
 import axios from "axios";
-import {LOGIN} from "../consts";
 const tg = window.Telegram.WebApp
 let authToken = window.localStorage.getItem("token");
 
-const baseURL = "https://ip-45-137-148-81-100178.vps.hosted-by-mvps.net/api/";
+const baseURL = "https://visitca.travel/api/";
 
 const $host = axios.create({
     baseURL: baseURL
@@ -38,10 +37,6 @@ const RefreshToken = async () => {
         updateAuthHeader(authToken);
     } catch (error) {
         console.error("Token yangilash muvaffaqiyatsiz bo'ldi:", error);
-
-        window.localStorage.removeItem("token");
-        window.location.assign(LOGIN);
-
     }
 };
 
