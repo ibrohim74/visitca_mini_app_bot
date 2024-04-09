@@ -28,9 +28,12 @@ const HomePage = () => {
                         <Icon.UserDefolt/>
                     }
                 </div>
-                {user?.username}
-                {user?.role}
-                {user?.id}
+                <div className={style.section_profile__name}>
+                    <h1>{user?.username}</h1>
+                </div>
+                <div className={style.section_profile__tel}>
+                    <p>{user?.phone_number}</p>
+                </div>
             </div>
         </div>
     );
