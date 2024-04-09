@@ -10,7 +10,8 @@ import { BOT } from "./utils/routes";
 
 function App() {
     const tg = window.Telegram.WebApp
-    const token = window.localStorage.getItem("token");
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('tgWebAppStartParam');
 
     return (
         // <BrowserRouter>
@@ -24,8 +25,9 @@ function App() {
         //         )}
         //     </Routes>
         // </BrowserRouter>
-
-        <>test</>
+        <>{token}
+            {urlParams}
+        </>
     );
 }
 
