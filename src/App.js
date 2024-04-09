@@ -13,17 +13,19 @@ function App() {
     const token = window.localStorage.getItem("token");
 
     return (
-        <BrowserRouter>
-            <Routes>
-                {token ? (
-                    BOT.map(({ path, component }) => (
-                        <Route key={path} path={path} element={component} />
-                    ))
-                ) : (
-                    <Route path={LOGIN} element={<Login />} />
-                )}
-            </Routes>
-        </BrowserRouter>
+        // <BrowserRouter>
+        //     <Routes>
+        //         {token ? (
+        //             BOT.map(({ path, component }) => (
+        //                 <Route key={path} path={path} element={component} />
+        //             ))
+        //         ) : (
+        //             <Route path={LOGIN} element={<Login />} />
+        //         )}
+        //     </Routes>
+        // </BrowserRouter>
+
+        <>test</>
     );
 }
 
