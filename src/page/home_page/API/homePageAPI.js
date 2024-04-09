@@ -5,7 +5,6 @@ export const GetCurrentUser = ()=>{
     try {
         const JWT = jwtDecode(token)
         const res = $host.get(`user/${JWT.userId}`)
-
         return res
     }catch (e){
         console.log(e)

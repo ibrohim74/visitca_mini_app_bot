@@ -12,18 +12,18 @@ function App() {
      const urlParams = new URLSearchParams(window.location.search);
 
     return (
-        <BrowserRouter>
-            <Routes>
-                {urlParams ? (
-                    BOT.map(({ path, component }) => (
-                        <Route key={path} path={path} element={component} />
-                    ))
-                ) : (
-                    <>no token</>
-                )}
-            </Routes>
-        </BrowserRouter>
-
+        // <BrowserRouter>
+        //     <Routes>
+        //         {urlParams ? (
+        //             BOT.map(({ path, component }) => (
+        //                 <Route key={path} path={path} element={component} />
+        //             ))
+        //         ) : (
+        //             <>no token</>
+        //         )}
+        //     </Routes>
+        // </BrowserRouter>
+<>{urlParams}</>
     );
 }
 
