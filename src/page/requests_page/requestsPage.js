@@ -10,6 +10,7 @@ const RequestsPage = () => {
 
     return (
         <div>
+            {urlParams}
             <HeaderPage url={HOME_PAGE} title={'Заявки'}/>
             request <br/>
             <Link to={HOME_PAGE}>gjjgkgkhgjhg</Link>
