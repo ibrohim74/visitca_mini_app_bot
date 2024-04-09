@@ -18,6 +18,7 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
+
                 {token ? (
                     BOT.map(({ path, component }) => (
                         <Route key={path} path={path} element={component} />
