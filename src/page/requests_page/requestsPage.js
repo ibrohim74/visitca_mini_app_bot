@@ -10,7 +10,7 @@ const RequestsPage = () => {
 
     return (
         <div>
-
+            {currentUrl}
             <HeaderPage url={BACK_HOME} title={'Заявки'}/>
             request <br/>
             <Link to={HOME_PAGE}>gjjgkgkhgjhg</Link>
