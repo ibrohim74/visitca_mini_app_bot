@@ -46,6 +46,7 @@
     align-items: center;
     flex-direction: column;
     width: 90%;
+    margin: 0 20px;
 }
 .section_homePage_buttons_item{
     width: 100%;
