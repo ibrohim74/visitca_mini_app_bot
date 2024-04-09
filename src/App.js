@@ -11,6 +11,7 @@ function App() {
     const tg = window.Telegram.WebApp
     // URL'dan parametrlarni olish
     const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
 
 
 
@@ -27,7 +28,7 @@ function App() {
         //     </Routes>
         // </BrowserRouter>
 <>
-    {urlParams}
+    {token}
 
 </>
     );
