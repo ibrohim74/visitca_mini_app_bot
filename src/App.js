@@ -9,7 +9,15 @@ import { BOT } from "./utils/routes";
 
 function App() {
     const tg = window.Telegram.WebApp
-     const urlParams = new URLSearchParams(window.location.search);
+    // URL'dan parametrlarni olish
+    const urlParams = new URLSearchParams(window.location.search);
+
+// "tgWebAppStartParam" parametri orqali token sozini olib tashlash
+    const tokenParam = urlParams.get('tgWebAppStartParam');
+
+// Token sozini olish
+    const token = tokenParam.split('=')[1]; // '=' belgisidan keyin kelgan qismini olib tashlash
+
 
     return (
         // <BrowserRouter>
@@ -23,7 +31,15 @@ function App() {
         //         )}
         //     </Routes>
         // </BrowserRouter>
-<>{urlParams}</>
+<>{token}
+
+    <br/>
+    {tokenParam}
+
+    <br/>
+
+    {urlParams}
+</>
     );
 }
 
