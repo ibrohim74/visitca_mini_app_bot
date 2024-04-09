@@ -24,7 +24,6 @@ const HomePage = () => {
         flexDirection:"column"
         }}>
             <Header/>
-            {urlParams}
             <div className={style.section_profile}>
                 <div className={style.section_profile__photo}>
                     {user?.image_path ?

@@ -1,5 +1,5 @@
 import React from 'react';
-import {BOOKINGS_PAGE, HOME_PAGE} from "../../utils/consts";
+import {BACK_HOME, BOOKINGS_PAGE, HOME_PAGE} from "../../utils/consts";
 import HeaderPage from "../../component/header_page/headerPage";
 import {Link} from "react-router-dom";
 
@@ -11,7 +11,7 @@ const RequestsPage = () => {
     return (
         <div>
             {urlParams}
-            <HeaderPage url={HOME_PAGE} title={'Заявки'}/>
+            <HeaderPage url={BACK_HOME} title={'Заявки'}/>
             request <br/>
             <Link to={HOME_PAGE}>gjjgkgkhgjhg</Link>
 
