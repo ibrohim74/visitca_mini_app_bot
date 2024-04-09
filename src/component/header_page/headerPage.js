@@ -9,8 +9,9 @@ const HeaderPage = (props) => {
             <Link to={props.url ? props.url : HOME_PAGE} className={style.backButton}>
                 <Icon.ArrowLeft/>
             </Link>
-            <div className={style.headerPage_title}></div>
-            <h1>{props?.title}</h1>
+            <div className={style.headerPage_title}>
+                <h1>{props?.title}</h1>
+            </div>
         </div>
     );
 };
