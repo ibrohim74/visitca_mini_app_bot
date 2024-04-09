@@ -5,12 +5,14 @@ import HeaderPage from "../../component/header_page/headerPage";
 const RequestsPage = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get('token');
+    const currentUrl = window.location.href;
+
     return (
         <div>
             <HeaderPage url={HOME_PAGE} title={'Заявки'}/>
-            request
-            {urlParams} <br/>
-            {token}
+            request <br/>
+            {currentUrl}
+
         </div>
     );
 };

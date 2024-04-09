@@ -13,6 +13,7 @@ function App() {
     // URL'dan parametrlarni olish
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get('token');
+    const currentUrl = window.location.href;
 
     useEffect(()=>{
         tg.expand()
@@ -32,8 +33,7 @@ function App() {
             </Routes>
         </BrowserRouter>
 
-            {urlParams} <br/>
-            {token}
+            {currentUrl}
     </>
 
     );
