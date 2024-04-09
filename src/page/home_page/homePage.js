@@ -5,6 +5,8 @@ import style from './homePage.module.css'
 import {GetCurrentUser} from "./API/homePageAPI";
 import {Icon} from "../../component/icons/icon";
 import Footer from "../../component/footer/footer";
+import {Link} from "react-router-dom";
+import {BOOKINGS_PAGE, REQUESTS_PAGE, STAT_PAGE} from "../../utils/consts";
 
 const HomePage = () => {
     const [user , setUser] = useState()
@@ -41,15 +43,15 @@ const HomePage = () => {
             </div>
 
             <div className={style.section_homePage_buttons}>
-                <div className={style.section_homePage_buttons_item}>
+                <Link to={REQUESTS_PAGE} className={style.section_homePage_buttons_item}>
                     Заявки
-                </div>
-                <div className={style.section_homePage_buttons_item}>
+                </Link>
+                <Link to={BOOKINGS_PAGE} className={style.section_homePage_buttons_item}>
                     Бронированые
-                </div>
-                <div className={style.section_homePage_buttons_item}>
+                </Link>
+                <Link to={STAT_PAGE} className={style.section_homePage_buttons_item}>
                     Статистика
-                </div>
+                </Link>
             </div>
 
             <Footer/>
