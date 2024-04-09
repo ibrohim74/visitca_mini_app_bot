@@ -7,6 +7,9 @@ body{
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
 }
+a{
+    text-decoration: none !important;
+}
 .container{
     max-width: 1200px;
     padding: 0 10px;

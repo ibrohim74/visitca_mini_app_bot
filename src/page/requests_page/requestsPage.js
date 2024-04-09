@@ -1,11 +1,11 @@
 import React from 'react';
-import BackButton from "../../component/back_button/backButton";
 import {BOOKINGS_PAGE, HOME_PAGE} from "../../utils/consts";
+import HeaderPage from "../../component/header_page/headerPage";
 
 const RequestsPage = () => {
     return (
         <div>
-            <BackButton url={BOOKINGS_PAGE}/>
+            <HeaderPage url={HOME_PAGE} title={'Заявки'}/>
             request
         </div>
     );
