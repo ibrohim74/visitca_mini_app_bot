@@ -17,7 +17,9 @@ const HomePage = () => {
     },[])
 
     return (
-        <div className={'container'}>
+        <div className={'container'} style={{display:'flex' , justifyContent:"center" , alignItems:'center' ,
+        flexDirection:"column"
+        }}>
             <Header/>
 
             <div className={style.section_profile}>
