@@ -1,10 +1,6 @@
-.container{
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
+
 .section_profile{
-    width: 100%;
+    width: 90%;
     background: #EEEFF5;
     border-radius: 10px;
     display: flex;

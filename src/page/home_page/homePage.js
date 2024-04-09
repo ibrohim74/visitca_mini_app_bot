@@ -17,7 +17,7 @@ const HomePage = () => {
     },[])
 
     return (
-        <div className={style.container}>
+        <div className={'container'}>
             <Header/>
 
             <div className={style.section_profile}>
