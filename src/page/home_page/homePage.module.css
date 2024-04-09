@@ -1,3 +1,8 @@
+.container{
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
 .section_profile{
     width: 100%;
     background: #EEEFF5;

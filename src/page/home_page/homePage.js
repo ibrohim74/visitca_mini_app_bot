@@ -17,7 +17,7 @@ const HomePage = () => {
     },[])
 
     return (
-        <div className={'container'}>
+        <div className={style.container}>
             <Header/>
 
             <div className={style.section_profile}>
@@ -31,9 +31,11 @@ const HomePage = () => {
                 <div className={style.section_profile__name}>
                     <h1>{user?.username}</h1>
                 </div>
-                <div className={style.section_profile__tel}>
+
+                {user?.phone_number &&  <div className={style.section_profile__tel}>
                     <p>{user?.phone_number}</p>
-                </div>
+                </div>}
+
             </div>
         </div>
     );
