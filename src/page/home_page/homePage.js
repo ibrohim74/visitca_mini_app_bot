@@ -4,6 +4,7 @@ import Header from "../../component/header/header";
 import style from './homePage.module.css'
 import {GetCurrentUser} from "./API/homePageAPI";
 import {Icon} from "../../component/icons/icon";
+import Footer from "../../component/footer/footer";
 
 const HomePage = () => {
     const [user , setUser] = useState()
@@ -50,6 +51,8 @@ const HomePage = () => {
                     Статистика
                 </div>
             </div>
+
+            <Footer/>
         </div>
     );
 };
