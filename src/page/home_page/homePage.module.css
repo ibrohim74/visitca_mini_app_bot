@@ -1,7 +1,7 @@
 
 .section_profile{
     width: 90%;
-    background: #EEEFF5;
+    background: #ECECEC;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -36,5 +36,6 @@
 
 }
 .section_profile__tel p{
-    font-size: 16px;
+    font-size: 12px;
+    color: #A6A6A6;
 }
