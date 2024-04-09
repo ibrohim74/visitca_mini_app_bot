@@ -15,7 +15,8 @@
     align-items: center;
     width: 70px;
     height: 70px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    margin-top: 13px;
 }
 .section_profile__photo img , .section_profile__photo svg {
     width: 100%;
@@ -28,14 +29,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
 }
 .section_profile__name h1{
     font-size: 20px;
-    font-weight: bold;
-
+    font-weight: 600;
+    margin-bottom: 13px;
 }
 .section_profile__tel p{
     font-size: 12px;
     color: #A6A6A6;
+    margin-bottom: 13px;
 }

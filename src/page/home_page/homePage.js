@@ -37,7 +37,6 @@ const HomePage = () => {
                 {user?.phone_number &&  <div className={style.section_profile__tel}>
                     <p>{user?.phone_number}</p>
                 </div>}
-
             </div>
         </div>
     );
