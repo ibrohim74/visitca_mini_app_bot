@@ -1,0 +1,15 @@
+.requests_list{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 10px;
+}
+.request_list__item{
+    border-radius: 20px;
+    border: 2px #EEEFF5 solid;
+    padding: 10px;
+    background: black;
+    width: 100%;
+}

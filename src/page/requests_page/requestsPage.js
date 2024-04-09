@@ -2,19 +2,22 @@ import React from 'react';
 import {BACK_HOME, BOOKINGS_PAGE, HOME_PAGE} from "../../utils/consts";
 import HeaderPage from "../../component/header_page/headerPage";
 import {Link, useParams} from "react-router-dom";
-
+import style from './requests.module.css'
 const RequestsPage = () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get('token');
-    const currentUrl = window.location.href;
+
 
     return (
-        <div>
-            {currentUrl}
+        <div className={`container`}>
             <HeaderPage url={BACK_HOME} title={'Заявки'}/>
-            request <br/>
-            <Link to={HOME_PAGE}>gjjgkgkhgjhg</Link>
+            <div className={style.requests_list}>
+                <div className={style.request_list__item}>
 
+                </div>
+
+                <div className={style.request_list__item}>
+
+                </div>
+            </div>
         </div>
     );
 };
