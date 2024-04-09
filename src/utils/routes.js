@@ -1,4 +1,4 @@
-import {HOME_PAGE, LOGIN} from "./consts";
+import {HOME_PAGE} from "./consts";
 import HomePage from "../page/home_page/homePage";
 
 export const BOT =[

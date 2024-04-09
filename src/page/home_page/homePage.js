@@ -1,14 +1,11 @@
 import React from 'react';
 import {useTelegram} from "../../hooks/useTelegram";
+import Header from "../../component/header/header";
 
 const HomePage = () => {
-    const {tg} = useTelegram()
     return (
         <div>
-            home
-            <button onClick={()=>window.localStorage.clear()}>ufgf</button>
-            <br/>
-            {window.localStorage.getItem('token')}
+            <Header/>
         </div>
     );
 };

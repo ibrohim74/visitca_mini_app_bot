@@ -1,0 +1,10 @@
+.headerBox{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.headerBox svg{
+    display: inline-block;
+    width: 100px;
+}
