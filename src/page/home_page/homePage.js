@@ -18,7 +18,7 @@ const HomePage = () => {
             }
         })
     },[])
-
+    const urlParams = new URLSearchParams(window.location.search);
     return (
         <div className={'container'} style={{display:'flex' , justifyContent:"center" , alignItems:'center' ,
         flexDirection:"column"
@@ -43,7 +43,7 @@ const HomePage = () => {
             </div>
 
             <div className={style.section_homePage_buttons}>
-                <Link to={REQUESTS_PAGE} className={style.section_homePage_buttons_item}>
+                <Link to={urlParams+REQUESTS_PAGE} className={style.section_homePage_buttons_item}>
                     Заявки
                 </Link>
                 <Link to={BOOKINGS_PAGE} className={style.section_homePage_buttons_item}>
