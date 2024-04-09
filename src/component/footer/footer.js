@@ -4,8 +4,7 @@ import {Icon} from "../icons/icon";
 
 const Footer = () => {
     return (
-        <div className={`container ${style.footer}`} style={{display:'flex' , justifyContent:"center" , alignItems:'flex-end'
-        }}>
+        <div className={`container ${style.footer}`}>
             <p><Icon.Question/> Справка и поддержа</p>
         </div>
     );

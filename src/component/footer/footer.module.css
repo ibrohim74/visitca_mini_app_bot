@@ -1,9 +1,22 @@
-.footer{
+.footer {
+    position: fixed; /* Fix bo'lib turishi uchun */
+    bottom: 0; /* Ekranning pastki qismida */
     width: 100%;
     height: 60px;
+    background-color: #ffffff; /* Footer foni */
+    border-top: 1px solid #e0e0e0; /* Pastki chegarasini ko'rsatish */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.footer p{
+
+.footer p {
     font-size: 14px;
     font-weight: 600;
-    color: #292D32;
+    color: #292d32;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
