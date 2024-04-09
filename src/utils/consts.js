@@ -1,5 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
-export const HOME_PAGE = '/'+urlParams;
-export const REQUESTS_PAGE = urlParams+'/requests';
+const token = urlParams.get('token');
+export const HOME_PAGE = '/'+token;
+export const REQUESTS_PAGE = '/requests';
 export const BOOKINGS_PAGE = '/bookings';
 export const STAT_PAGE = '/stat';
