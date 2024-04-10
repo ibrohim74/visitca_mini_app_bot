@@ -13,10 +13,6 @@ const RequestsPage = () => {
                 <div className={style.request_list__item}>
 
                 </div>
-
-                <div className={style.request_list__item}>
-
-                </div>
             </div>
         </div>
     );

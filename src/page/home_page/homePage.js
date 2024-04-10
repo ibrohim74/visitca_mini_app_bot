@@ -17,11 +17,13 @@ const HomePage = () => {
             }
         })
     },[])
-
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
     return (
         <div className={'container'} style={{display:'flex' , justifyContent:"center" , alignItems:'center' ,
         flexDirection:"column"
         }}>
+            {token}
             <Header/>
             <div className={style.section_profile}>
                 <div className={style.section_profile__photo}>
