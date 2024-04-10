@@ -9,7 +9,144 @@
 .request_list__item{
     border-radius: 20px;
     border: 2px #EEEFF5 solid;
-    padding: 10px;
+
     background: black;
     width: 100%;
 }
+
+.sellerDashboard__new_request_item {
+    font-family: "Montserrat", sans-serif;
+    width: 100%;
+    padding: 10px;
+    border: 2px #EEEFF5 solid;
+    border-radius: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+.sellerDashboard__new_request_item_column_1 {
+    height: 33.33%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+
+}
+
+.sellerDashboard__new_request_item_column_2 {
+    height: 33.33%;
+    display: flex;
+    margin-top: 16px;
+    width: 100%;
+}
+
+.sellerDashboard__new_request_item_column_3 {
+    height: 33.33%;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.sellerDashboard__new_request_item_column_photo {
+    height: 100px;
+    width: 100px;
+    margin-right: 15px;
+}
+
+.sellerDashboard__new_request_item_column_photo img, .sellerDashboard__new_request_item_column_photo svg {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.sellerDashboard__new_request_item_column_title {
+    color: #292D32;
+    width: 100%;
+}
+
+.sellerDashboard__new_request_item_column_title h1 {
+    color: #292D32;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.sellerDashboard__new_request_item_column_title p {
+    color: #292D32;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.sellerDashboard__new_request_item_column_rating {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.sellerDashboard__new_request_item_column_2_day {
+    background: #F7F8F9;
+    height: 46px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.sellerDashboard__new_request_item_column_2_day p {
+    font-size: 20px;
+    color: #292D32;
+    display: flex;
+    align-items: center;
+}
+.sellerDashboard__new_request_item_column_2_day p svg{
+    margin-right: 10px;
+}
+.sellerDashboard__new_request_item_column_2_day p:nth-child(1) {
+    margin-right: 15px;
+}
+
+.sellerDashboard__new_request_item_column_2_people {
+    width: 165px;
+    height: 46px;
+    background: #F7F8F9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 15px;
+}
+
+.sellerDashboard__new_request_item_column_3_buttons{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+}
+.sellerDashboard__new_request_item_column_3_buttons button{
+    padding: 13px 52px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.sellerDashboard__new_request_item_column_3_buttons button:nth-child(1){
+    background: #292D32;
+    margin: 0 ;
+    color: white;
+}
+.sellerDashboard__new_request_item_column_3_buttons button:nth-child(2){
+    background: #fff;
+    border: 1px #FF4141 solid;
+    color: #FF4141;
+
+}
+.sellerDashboard__new_request_item_column_3_contact{}
