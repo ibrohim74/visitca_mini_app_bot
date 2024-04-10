@@ -42,6 +42,12 @@ const RequestsPage = () => {
                         </div>
 
                     </div>
+
+                    <div className={style.sellerDashboard__new_request_item_column_price}>
+                        <h1>Цена:</h1>
+                        <h1>200.000 Сум</h1>
+                    </div>
+
                     <div className={style.sellerDashboard__new_request_item_column_3}>
                         <div className={style.sellerDashboard__new_request_item_column_3_buttons}>
                             <button >Принять</button>
