@@ -1,6 +1,7 @@
 
 import {jwtDecode} from "jwt-decode";
 import {$authHost, $host} from "../../../utils/http/http";
+const urlParams = new URLSearchParams(window.location.search);
 
 export const CreateAnnouncementAPI = async (data) =>{
     try {
@@ -14,7 +15,7 @@ export const CreateAnnouncementAPI = async (data) =>{
 }
 export const GetAnnouncementAPI = async ()=>{
     try {
-        const JWT = jwtDecode(localStorage.getItem('token'))
+        const JWT = jwtDecode(urlParams.get('token'))
         const res = await $authHost.get(`/user/dachas/${JWT.userId}`)
         console.log(res)
         return res
@@ -63,7 +64,7 @@ export const DeleteDachaPhotoAPI = async (url)=>{
 
 export const GetRequestAPI = async ()=>{
     try {
-        const JWT = jwtDecode(localStorage.getItem('token'))
+        const JWT = jwtDecode(urlParams.get('token'))
         const res = await $authHost.get(`/seller/${JWT.userId}/requests`)
         return res
     }catch (e){
