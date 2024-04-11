@@ -1,15 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import {BACK_HOME, BOOKINGS_PAGE, HOME_PAGE} from "../../utils/consts";
+import React, { useEffect, useState } from 'react';
+import { BACK_HOME } from "../../utils/consts";
 import HeaderPage from "../../component/header_page/headerPage";
-import {Link, useParams} from "react-router-dom";
-import style from './requests.module.css'
-import {Icon} from "../../component/icons/icon";
+import style from './requests.module.css';
+import { Icon } from "../../component/icons/icon";
 import Score from "../../component/score/score";
+import { AcceptRequestAPI, DenyRequestAPI, GetAnnouncementAPI, GetRequestAPI } from "./API/RequestsAPI";
 import {$authHost} from "../../utils/http/http";
-import {AcceptRequestAPI, DenyRequestAPI, GetAnnouncementAPI, GetRequestAPI} from "./API/RequestsAPI";
 
 const RequestsPage = () => {
-
     const [requests, setRequests] = useState([]);
     const [dacha, setDacha] = useState([]);
     const [client, setClient] = useState([]);
@@ -19,14 +17,13 @@ const RequestsPage = () => {
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         const options = {
-            weekday: "short", // short dan "Wed" uchun
+            weekday: "short",
             day: "2-digit",
             month: "2-digit",
         };
         const formattedDate = date.toLocaleDateString("ru-RU", options).replace('.', '/');
         return formattedDate;
     };
-
 
     const acceptRequest = (id) => {
         AcceptRequestAPI(id).then((r) => {
@@ -51,9 +48,7 @@ const RequestsPage = () => {
             if (requestResponse?.data) {
                 const awaitingRequests = requestResponse.data.filter(item => item.status === "awaiting");
                 setRequests(awaitingRequests);
-                console.log(requestResponse);
             }
-
 
             const announcementResponse = await GetAnnouncementAPI();
             if (announcementResponse?.data) {
@@ -64,24 +59,17 @@ const RequestsPage = () => {
                 setPhotoUrls(images);
             }
         } catch (error) {
-            setIsLoading(false);
             console.log("Error fetching data:", error);
         } finally {
             setIsLoading(false);
         }
     };
 
-    useEffect(() => {
-        fetchData();
-    }, [requests]);
-
-
-
     const getClient = async () => {
         try {
             const clientData = [];
             for (const item of requests) {
-                const res = await $authHost.get("user/" + item.customer_id);
+                const res = await $authHost.get("user/" + item?.customer_id);
                 clientData.push(res.data);
             }
             setClient(clientData);
@@ -91,24 +79,23 @@ const RequestsPage = () => {
     };
 
     useEffect(() => {
+        fetchData();
+    }, []);
+
+    useEffect(() => {
         getClient();
     }, [requests]);
-
-
-
 
     return (
         <div className={`container`}>
             <HeaderPage url={BACK_HOME} title={'Заявки'}/>
-            {requests.length}
             <div className={style.requests_list}>
-                {isLoading  ? 'loading' : 'finished'}
-                {requests?.length >0 ?
+                {isLoading ? 'loading' : 'finished'}
+                {requests?.length > 0 ?
                     requests.map((item) => {
-                        console.log(item)
-                        if (item.status === "awaiting"){
+                        if (item.status === "awaiting") {
                             return (
-                                <div  className={style.sellerDashboard__new_request_item}>
+                                <div className={style.sellerDashboard__new_request_item} key={item.id}>
                                     <div className={style.sellerDashboard__new_request_item_column_1}>
                                         <div className={style.sellerDashboard__new_request_item_column_photo}>
                                             <Icon.ImgPlaceholder
@@ -116,18 +103,13 @@ const RequestsPage = () => {
                                                 height={"100%"}
                                             />
                                         </div>
-                                        <div
-                                            className={style.sellerDashboard__new_request_item_column_title}>
+                                        <div className={style.sellerDashboard__new_request_item_column_title}>
                                             <h1>Luex Dacha Premium</h1>
                                             <div className={style.sellerDashboard__new_request_item_column_rating}>
-
                                                 <p>sadasdasd </p>
                                                 <Score score={3}/>
-
                                             </div>
-
                                         </div>
-
                                     </div>
 
                                     <div className={style.sellerDashboard__new_request_item_column_2}>
@@ -135,7 +117,6 @@ const RequestsPage = () => {
                                             <p><Icon.Month/>Mon 05/12</p>
                                             <p><Icon.Month/>Mon 05/12</p>
                                         </div>
-
                                     </div>
 
                                     <div className={style.sellerDashboard__new_request_item_column_price}>
@@ -145,18 +126,19 @@ const RequestsPage = () => {
 
                                     <div className={style.sellerDashboard__new_request_item_column_3}>
                                         <div className={style.sellerDashboard__new_request_item_column_3_buttons}>
-                                            <button >Принять</button>
-                                            <button >Отказать</button>
+                                            <button onClick={() => acceptRequest(item.id)}>Принять</button>
+                                            <button onClick={() => denyRequest(item.id)}>Отказать</button>
                                         </div>
                                     </div>
-
                                 </div>
                             );
                         }
-                    }) :  <div className={style.SellerDashboardNoData}>
+                    }) :
+                    <div className={style.SellerDashboardNoData}>
                         <Icon.NoDocuments/>
                         <p>На данный момент ничего нету</p>
-                    </div>}
+                    </div>
+                }
             </div>
         </div>
     );
