@@ -101,6 +101,7 @@ const RequestsPage = () => {
         <div className={`container`}>
             <HeaderPage url={BACK_HOME} title={'Заявки'}/>
             <div className={style.requests_list}>
+                {isLoading  ? 'loading' : 'finished'}
                 {requests?.length >0 ?
                     requests.map((item) => {
                         console.log(item)
