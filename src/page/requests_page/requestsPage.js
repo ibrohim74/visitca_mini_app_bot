@@ -73,7 +73,7 @@ const RequestsPage = () => {
 
     useEffect(() => {
         fetchData();
-    }, [requests.length , dacha.length]);
+    }, [requests]);
 
 
 
