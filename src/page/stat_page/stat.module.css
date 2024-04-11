@@ -2,11 +2,25 @@
     width: 100%;
 }
 .stat_month select{
-    width: 16%;
+    width: 32%;
     font-family: "Montserrat", sans-serif;
     font-size: 18px;
     font-weight: 800;
     border: none;
     outline: none;
     background: url("arrowDown.svg") no-repeat right
+}
+.stat_list{
+    margin-top: 14px;
+}
+.stat_list_item{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.stat_list_item p{
+    font-weight: 600;
+    font-size: 18px;
+    color: #292D32;
 }
