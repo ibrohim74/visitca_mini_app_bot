@@ -44,35 +44,35 @@ const RequestsPage = () => {
         });
     };
 
-    const fetchData = async () => {
-        setIsLoading(true);
-        try {
-            const requestResponse = await GetRequestAPI();
-            if (requestResponse?.data) {
-                const awaitingRequests = requestResponse.data.filter(item => item.status === "awaiting");
-                setRequests(awaitingRequests);
-                console.log(requestResponse);
-            }
-
-
-            const announcementResponse = await GetAnnouncementAPI();
-            if (announcementResponse?.data) {
-                setDacha(announcementResponse.data);
-                const images = announcementResponse.data.map((item) =>
-                    item?.photos_path?.split("\n").filter(Boolean).map(url => url.trim())
-                );
-                setPhotoUrls(images);
-            }
-        } catch (error) {
-            setIsLoading(false);
-            console.log("Error fetching data:", error);
-        } finally {
-            setIsLoading(false);
-        }
-    };
 
     useEffect(() => {
-        fetchData();
+
+        const fetchData = async () => {
+            setIsLoading(true);
+            try {
+                const requestResponse = await GetRequestAPI();
+                if (requestResponse?.data) {
+                    const awaitingRequests = requestResponse.data.filter(item => item.status === "awaiting");
+                    setRequests(awaitingRequests);
+                    console.log(requestResponse);
+                }
+
+
+                const announcementResponse = await GetAnnouncementAPI();
+                if (announcementResponse?.data) {
+                    setDacha(announcementResponse.data);
+                    const images = announcementResponse.data.map((item) =>
+                        item?.photos_path?.split("\n").filter(Boolean).map(url => url.trim())
+                    );
+                    setPhotoUrls(images);
+                }
+            } catch (error) {
+                setIsLoading(false);
+                console.log("Error fetching data:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
     }, []);
 
 
