@@ -23,7 +23,6 @@ const HomePage = () => {
         <div className={'container'} style={{display:'flex' , justifyContent:"center" , alignItems:'center' ,
         flexDirection:"column"
         }}>
-            {token}
             <Header/>
             <div className={style.section_profile}>
                 <div className={style.section_profile__photo}>
@@ -43,13 +42,13 @@ const HomePage = () => {
             </div>
 
             <div className={style.section_homePage_buttons}>
-                <Link to={REQUESTS_PAGE} className={style.section_homePage_buttons_item}>
+                <Link to={REQUESTS_PAGE+`?token=${token}`} className={style.section_homePage_buttons_item}>
                     Заявки
                 </Link>
-                <Link to={BOOKINGS_PAGE} className={style.section_homePage_buttons_item}>
+                <Link to={BOOKINGS_PAGE+`?token=${token}`} className={style.section_homePage_buttons_item}>
                     Бронированые
                 </Link>
-                <Link to={STAT_PAGE} className={style.section_homePage_buttons_item}>
+                <Link to={STAT_PAGE+`?token=${token}`} className={style.section_homePage_buttons_item}>
                     Статистика
                 </Link>
             </div>

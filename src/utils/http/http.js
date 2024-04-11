@@ -1,12 +1,12 @@
 import axios from "axios";
-const tg = window.Telegram.WebApp
-let authToken = window.localStorage.getItem("token");
+
+let authToken = null;
 
 const baseURL = "https://visitca.travel/api/";
 
 const $host = axios.create({
     baseURL: baseURL
-})
+});
 
 const $authHost = axios.create({
     baseURL: baseURL,
@@ -17,34 +17,42 @@ const updateAuthHeader = (token) => {
 };
 
 const RefreshToken = async () => {
-    const JWT = window.localStorage.getItem("token");
-    console.log(JWT);
+    const urlParams = new URLSearchParams(window.location.search);
+    authToken = urlParams.get('token');
+
+    if (!authToken) {
+        console.error("Token not found in URL");
+        return;
+    }
+
     try {
         const response = await axios.post(
-            "https://ip-45-137-148-81-100178.vps.hosted-by-mvps.net/api/refresh_token",
+            "https://visitca.travel/api/refresh_token",
             null,
             {
                 headers: {
-                    Authorization: `Bearer ${JWT}`,
+                    Authorization: `Bearer ${authToken}`,
                 },
             }
         );
-        console.log(response);
 
         authToken = response.data.access_token;
-        window.localStorage.setItem("token", authToken);
+        urlParams.set('token', authToken);
+
+        // Construct the new URL with updated token and replace the current one
+        const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+        window.history.replaceState({}, document.title, newUrl);
 
         updateAuthHeader(authToken);
+        console.log('erwrwer')
     } catch (error) {
-        console.error("Token yangilash muvaffaqiyatsiz bo'ldi:", error);
+        console.error("Failed to refresh token:", error);
     }
 };
-
 $authHost.interceptors.request.use(async (config) => {
     config.headers.Authorization = `Bearer ${authToken}`;
     return config;
 });
-
 $authHost.interceptors.response.use(
     (response) => response,
     async (error) => {
@@ -64,15 +72,14 @@ $authHost.interceptors.response.use(
 $host.interceptors.response.use(
     (response) => response,
     async (error) => {
-        if (error.response?.status === 404) {
-            window.localStorage.removeItem('token')
+        if (error.response?.status === 404 ) {
+            window.localStorage.clear()
             window.location.reload()
         }
         return Promise.reject(error);
     }
 );
 
+setInterval(RefreshToken, 60 * 20 * 1000    );
 
-setInterval(RefreshToken, 20 * 60 * 1000);
-
-export {$authHost, $host, RefreshToken};
+export { $authHost, $host, RefreshToken };

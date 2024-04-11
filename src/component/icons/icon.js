@@ -8,6 +8,7 @@ import {ReactComponent as ImgPlaceholder} from "./imgPlaceholder.svg";
 import {ReactComponent as StarFull} from "./starFull.svg";
 import {ReactComponent as StarHalf} from "./starHalf.svg";
 import {ReactComponent as StarEmpty} from "./starEmpty.svg";
+import {ReactComponent as NoDocuments} from "./NoDocuments.svg";
 
 
 export const Icon = {
@@ -20,5 +21,6 @@ export const Icon = {
     ImgPlaceholder,
     StarEmpty,
     StarHalf,
-    StarFull
+    StarFull,
+    NoDocuments
 }

@@ -1,0 +1,12 @@
+.stat_month{
+    width: 100%;
+}
+.stat_month select{
+    width: 16%;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    border: none;
+    outline: none;
+    background: url("arrowDown.svg") no-repeat right
+}
