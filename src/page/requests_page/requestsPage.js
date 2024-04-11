@@ -44,6 +44,7 @@ const RequestsPage = () => {
 
     const fetchData = async () => {
         setIsLoading(true);
+        setError('kirdi')
         try {
 
             const requestResponse = await GetRequestAPI();
@@ -61,7 +62,7 @@ const RequestsPage = () => {
                 setPhotoUrls(images);
             }
         } catch (errors) {
-            setError(errors)
+            // setError(errors)
         } finally {
             setIsLoading(false);
         }
