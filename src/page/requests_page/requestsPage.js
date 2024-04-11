@@ -100,13 +100,10 @@ const RequestsPage = () => {
     return (
         <div className={`container`}>
             <HeaderPage url={BACK_HOME} title={'Заявки'}/>
-
-            {requests.map((item)=>{
-                return <div>{item.status}</div>
-            })}
+            {requests.length}
             <div className={style.requests_list}>
                 {isLoading  ? 'loading' : 'finished'}
-                {requests ?
+                {requests?.length >0 ?
                     requests.map((item) => {
                         console.log(item)
                         if (item.status === "awaiting"){
