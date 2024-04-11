@@ -78,9 +78,25 @@ const RequestsPage = () => {
         }
     };
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+    useEffect(()=>{
+        GetRequestAPI().then(r => {
+            if (r.status === 200){
+                setRequests(r.data)
+            }
+        })
+
+        GetAnnouncementAPI().then(r=>{
+            if (r.status === 200){
+                setDacha(r.data);
+                const images = r.data.map((item) =>
+                    item?.photos_path?.split("\n").filter(Boolean).map(url => url.trim())
+                );
+                setPhotoUrls(images);
+            }
+        })
+    },[])
+
+
 
     useEffect(() => {
         getClient();
