@@ -44,8 +44,11 @@ const RequestsPage = () => {
 
     const fetchData = async () => {
         setIsLoading(true);
+        setError('kirdi')
         try {
+
             const requestResponse = await GetRequestAPI();
+            setError(requestResponse.status)
             if (requestResponse?.data) {
                 const awaitingRequests = requestResponse.data.filter(item => item.status === "awaiting");
                 setRequests(awaitingRequests);
