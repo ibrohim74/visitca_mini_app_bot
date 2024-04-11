@@ -73,6 +73,7 @@ const RequestsPage = () => {
                 setIsLoading(false);
             }
         };
+        fetchData()
     }, []);
 
 
