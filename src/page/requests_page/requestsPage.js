@@ -47,7 +47,6 @@ const RequestsPage = () => {
         try {
 
             const requestResponse = await GetRequestAPI();
-            setError(requestResponse.status)
             if (requestResponse?.data) {
                 const awaitingRequests = requestResponse.data.filter(item => item.status === "awaiting");
                 setRequests(awaitingRequests);
@@ -61,8 +60,8 @@ const RequestsPage = () => {
                 );
                 setPhotoUrls(images);
             }
-        } catch (error) {
-
+        } catch (errors) {
+            setError(errors)
         } finally {
             setIsLoading(false);
         }
