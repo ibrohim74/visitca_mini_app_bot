@@ -24,7 +24,7 @@ const RefreshToken = async () => {
         console.error("Token not found in URL");
         return;
     }
-
+    console.log(authToken)
     try {
         const response = await axios.post(
             "https://visitca.travel/api/refresh_token",
@@ -35,7 +35,7 @@ const RefreshToken = async () => {
                 },
             }
         );
-
+        console.log(response)
         authToken = response.data.access_token;
         urlParams.set('token', authToken);
 

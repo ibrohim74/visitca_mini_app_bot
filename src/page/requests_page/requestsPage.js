@@ -44,7 +44,6 @@ const RequestsPage = () => {
 
     const fetchData = async () => {
         setIsLoading(true);
-        setError('kirdi')
         try {
 
             const requestResponse = await GetRequestAPI();
