@@ -13,6 +13,7 @@ const RequestsPage = () => {
     const [client, setClient] = useState([]);
     const [photoUrls, setPhotoUrls] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -59,7 +60,7 @@ const RequestsPage = () => {
                 setPhotoUrls(images);
             }
         } catch (error) {
-            console.log("Error fetching data:", error);
+            setError(error)
         } finally {
             setIsLoading(false);
         }
@@ -78,25 +79,10 @@ const RequestsPage = () => {
         }
     };
 
-    useEffect(()=>{
-        GetRequestAPI().then(r => {
-            if (r.status === 200){
-                setRequests(r.data)
-            }
-        })
 
-        GetAnnouncementAPI().then(r=>{
-            if (r.status === 200){
-                setDacha(r.data);
-                const images = r.data.map((item) =>
-                    item?.photos_path?.split("\n").filter(Boolean).map(url => url.trim())
-                );
-                setPhotoUrls(images);
-            }
-        })
-    },[])
-
-
+    useEffect(() => {
+        fetchData()
+    }, []);
 
     useEffect(() => {
         getClient();
@@ -107,6 +93,7 @@ const RequestsPage = () => {
             <HeaderPage url={BACK_HOME} title={'Заявки'}/>
             <div className={style.requests_list}>
                 {isLoading ? 'loading' : 'finished'}
+                {error}
                 {requests?.length > 0 ?
                     requests.map((item) => {
                         if (item.status === "awaiting") {
