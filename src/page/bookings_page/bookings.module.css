@@ -111,3 +111,86 @@
     border: none !important;
     width: 100% !important;
 }
+
+.booking_itemPage_clients {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+
+.booking_itemPage_clients_item {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: #00000033 solid 1px;
+    border-radius: 10px;
+    margin: 5px 0;
+    flex-direction: column;
+}
+.booking_itemPage_clients_item:last-child{
+    margin-bottom: 15vh;
+}
+.booking_itemPage_clients_item_title{
+    width: 100%;
+    margin-bottom: 5px;
+}
+.booking_itemPage_clients_item_title h1{
+    font-size: 18px;
+    font-weight: 600;
+    color: #292D32;
+    margin: 2px 0;
+}
+.sellerDashboard__new_request_item_column_2_day {
+    background: #F7F8F9;
+    height: 46px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    width: 94%;
+}
+
+.sellerDashboard__new_request_item_column_2_day p {
+    font-size: 16px;
+    color: #292D32;
+    display: flex;
+    align-items: center;
+}
+.sellerDashboard__new_request_item_column_2_day p svg{
+    margin-right: 10px;
+}
+.sellerDashboard__new_request_item_column_2_day p:nth-child(1) {
+    margin-right: 15px;
+}
+
+.sellerDashboard__new_request_item_column_2_people {
+    width: 165px;
+    height: 46px;
+    background: #F7F8F9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 15px;
+}
+.booking_itemPage_clients_item_month{
+    width: 100%;
+}
+.booking_itemPage_clients_item_price{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 2px 0;
+}
+.booking_itemPage_clients_item_price h1{
+    margin: 3px 0;
+    font-size: 16px;
+    color: #292D32;
+    font-weight: 700;
+}

@@ -5,18 +5,18 @@ import { jwtDecode } from "jwt-decode";
 import { $authHost } from "../../utils/http/http";
 import { Icon } from "../icons/icon";
 
-const Calendar = (props) => {
-    const [dataEvents, setDataEvents] = useState([]);
+const Calendar = ({ dachaId, setEvents }) => {
     const [formattedEvents, setFormattedEvents] = useState([]);
+    const [dataEvents,  setDataEvents] = useState([]);
     const JWT = jwtDecode(new URLSearchParams(window.location.search).get('token'));
     const calendarRef = useRef(null);
 
     const getCalendarEvents = async () => {
         try {
             const res = await $authHost.get(`/seller/${JWT.userId}/bookings`);
-            const filterRes = res?.data.filter(e => e.accommodation_id === parseInt(props.dachaId));
+            const filterRes = res?.data.filter(e => e.accommodation_id === parseInt(dachaId));
             setDataEvents(filterRes);
-            props.setEvents(filterRes);
+            setEvents(filterRes);
         } catch (e) {
             console.log(e);
         }
@@ -34,20 +34,13 @@ const Calendar = (props) => {
         setFormattedEvents(formattedData);
     };
 
-    const handlePrevClick = () => {
-        const calendarApi = calendarRef.current.getApi();
-        calendarApi.prev();
-    };
-
-    const handleNextClick = () => {
-        const calendarApi = calendarRef.current.getApi();
-        calendarApi.next();
-    };
-
     useEffect(() => {
         fetchData();
-        getCalendarEvents();
     }, [dataEvents]);
+
+    useEffect(() => {
+        getCalendarEvents();
+    }, [dachaId]);
 
     return (
         <FullCalendar
