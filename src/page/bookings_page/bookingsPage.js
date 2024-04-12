@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { GetAnnouncementAPI } from "../requests_page/API/RequestsAPI";
 import { Icon } from "../../component/icons/icon";
 import { GetBookingsBySellerID, GetReviewAPI } from "./API/bookingAPI";
+import {PriceFormat} from "../../hooks/formatAmount";
 
 const BookingsPage = () => {
     const [dacha, setDacha] = useState([]);
@@ -102,7 +103,7 @@ const BookingsPage = () => {
                                                 </div>
                                             </div>
                                             <div className={style.bookings_list_item_footer}>
-                                                <h1>{item.price} {item.price_type}</h1>
+                                                <h1>{PriceFormat(item.price)} {item.price_type}</h1>
                                                 <Score score={item.rating} />
                                             </div>
                                         </div>

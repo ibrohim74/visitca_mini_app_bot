@@ -10,6 +10,7 @@ import {Icon} from "../../component/icons/icon";
 import Calendar from "../../component/calendar/calendar";
 import {$authHost} from "../../utils/http/http";
 import Footer from "../../component/footer/footer";
+import {PriceFormat} from "../../hooks/formatAmount";
 
 const BookingItemPage = () => {
     const [dacha, setDacha] = useState(null);
@@ -104,7 +105,7 @@ const BookingItemPage = () => {
 
                                 <div className={style.booking_itemPage_clients_item_price}>
                                     <h1>Цена :</h1>
-                                    <h1>{client.id === bookings[index].customer_id && bookings[index]?.final_price} {dacha?.price_type}</h1>
+                                    <h1>{client.id === bookings[index].customer_id && PriceFormat(bookings[index]?.final_price)} {dacha?.price_type}</h1>
                                 </div>
                             </div>
                         )

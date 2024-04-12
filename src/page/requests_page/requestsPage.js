@@ -6,6 +6,7 @@ import {Icon} from "../../component/icons/icon";
 import Score from "../../component/score/score";
 import {AcceptRequestAPI, DenyRequestAPI, GetAnnouncementAPI, GetRequestAPI} from "./API/RequestsAPI";
 import {$authHost} from "../../utils/http/http";
+import {PriceFormat} from "../../hooks/formatAmount";
 
 const RequestsPage = () => {
     const [requests, setRequests] = useState([]);
@@ -105,7 +106,7 @@ const RequestsPage = () => {
                                         <div className={style.sellerDashboard__new_request_item} key={item.id}>
                                             <div className={style.sellerDashboard__new_request_item_column_1}>
                                                 <div className={style.sellerDashboard__new_request_item_column_photo}>
-                                                    {currentPhotoUrl?.length > 0 ? (
+                                                    {currentPhotoUrl?.length > 0 && !isLoading ? (
                                                         <img
                                                             src={`https://visitca.travel/api${currentPhotoUrl[0]}/?token=${token}`}
                                                             alt={matchingDacha?.title}
@@ -135,7 +136,7 @@ const RequestsPage = () => {
                                             </div>
                                             <div className={style.sellerDashboard__new_request_item_column_price}>
                                                 <h1>Цена:</h1>
-                                                <h1>{item.requested_price} {matchingDacha.price_type}</h1>
+                                                <h1>{PriceFormat(item.requested_price)} {matchingDacha.price_type}</h1>
                                             </div>
                                             <div className={style.sellerDashboard__new_request_item_column_3}>
                                                 <div
