@@ -9,6 +9,8 @@ import {ReactComponent as StarFull} from "./starFull.svg";
 import {ReactComponent as StarHalf} from "./starHalf.svg";
 import {ReactComponent as StarEmpty} from "./starEmpty.svg";
 import {ReactComponent as NoDocuments} from "./NoDocuments.svg";
+import {ReactComponent as Prev} from "./prev.svg";
+import {ReactComponent as Next} from "./next.svg";
 
 
 export const Icon = {
@@ -22,5 +24,7 @@ export const Icon = {
     StarEmpty,
     StarHalf,
     StarFull,
-    NoDocuments
+    NoDocuments,
+    Prev,
+    Next
 }

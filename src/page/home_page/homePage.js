@@ -9,19 +9,20 @@ import {Link, useParams} from "react-router-dom";
 import {BOOKINGS_PAGE, REQUESTS_PAGE, STAT_PAGE} from "../../utils/consts";
 
 const HomePage = () => {
-    const [user , setUser] = useState()
-    useEffect(()=>{
-        GetCurrentUser().then(r=>{
-            if (r.status === 200){
+    const [user, setUser] = useState()
+    useEffect(() => {
+        GetCurrentUser().then(r => {
+            if (r.status === 200) {
                 setUser(r.data)
             }
         })
-    },[])
+    }, [])
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get('token');
     return (
-        <div className={'container'} style={{display:'flex' , justifyContent:"center" , alignItems:'center' ,
-        flexDirection:"column"
+        <div className={'container'} style={{
+            display: 'flex', justifyContent: "center", alignItems: 'center',
+            flexDirection: "column"
         }}>
             <Header/>
             <div className={style.section_profile}>
@@ -36,19 +37,19 @@ const HomePage = () => {
                     <h1>{user?.username}</h1>
                 </div>
 
-                {user?.phone_number &&  <div className={style.section_profile__tel}>
+                {user?.phone_number && <div className={style.section_profile__tel}>
                     <p>{user?.phone_number}</p>
                 </div>}
             </div>
 
             <div className={style.section_homePage_buttons}>
-                <Link to={REQUESTS_PAGE+`?token=${token}`} className={style.section_homePage_buttons_item}>
+                <Link to={REQUESTS_PAGE + `?token=${token}`} className={style.section_homePage_buttons_item}>
                     Заявки
                 </Link>
-                <Link to={BOOKINGS_PAGE+`?token=${token}`} className={style.section_homePage_buttons_item}>
+                <Link to={BOOKINGS_PAGE + `?token=${token}`} className={style.section_homePage_buttons_item}>
                     Бронированые
                 </Link>
-                <Link to={STAT_PAGE+`?token=${token}`} className={style.section_homePage_buttons_item}>
+                <Link to={STAT_PAGE + `?token=${token}`} className={style.section_homePage_buttons_item}>
                     Статистика
                 </Link>
             </div>

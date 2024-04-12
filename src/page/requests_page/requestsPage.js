@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { BACK_HOME } from "../../utils/consts";
+import React, {useEffect, useState} from 'react';
+import {BACK_HOME} from "../../utils/consts";
 import HeaderPage from "../../component/header_page/headerPage";
 import style from './requests.module.css';
-import { Icon } from "../../component/icons/icon";
+import {Icon} from "../../component/icons/icon";
 import Score from "../../component/score/score";
-import { AcceptRequestAPI, DenyRequestAPI, GetAnnouncementAPI, GetRequestAPI } from "./API/RequestsAPI";
+import {AcceptRequestAPI, DenyRequestAPI, GetAnnouncementAPI, GetRequestAPI} from "./API/RequestsAPI";
 import {$authHost} from "../../utils/http/http";
 
 const RequestsPage = () => {
@@ -14,7 +14,8 @@ const RequestsPage = () => {
     const [photoUrls, setPhotoUrls] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
-
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         const options = {
@@ -45,13 +46,11 @@ const RequestsPage = () => {
     const fetchData = async () => {
         setIsLoading(true);
         try {
-
             const requestResponse = await GetRequestAPI();
             if (requestResponse?.data) {
                 const awaitingRequests = requestResponse.data.filter(item => item.status === "awaiting");
                 setRequests(awaitingRequests);
             }
-
             const announcementResponse = await GetAnnouncementAPI();
             if (announcementResponse?.data) {
                 setDacha(announcementResponse.data);
@@ -80,7 +79,6 @@ const RequestsPage = () => {
         }
     };
 
-
     useEffect(() => {
         fetchData()
     }, []);
@@ -88,81 +86,79 @@ const RequestsPage = () => {
     useEffect(() => {
         getClient();
     }, [requests]);
-    console.log(dacha)
+
+    console.log(requests)
     return (
         <div className={`container`}>
             <HeaderPage url={BACK_HOME} title={'Заявки'}/>
             <div className={style.requests_list}>
-                {isLoading ? 'loading' : <>
-                    {requests?.length > 0 ?
+                {isLoading ? 'loading' : (
+                    requests?.length > 0 ?
                         requests.map((item) => {
                             if (item.status === "awaiting") {
-                                return (
-                                    < >
-                                        {dacha.map((dachaItem , index)=>{
-                                            if (item?.accommodation_id === dachaItem.id) {
-                                                const currentPhotoUrl = photoUrls[index];
-                                                const currentClient = client.find(
-                                                    (clientItem) => clientItem.id === item.customer_id
-                                                );
-
-                                                return(
-                                                    <div className={style.sellerDashboard__new_request_item} key={item.id}>
-                                                        <div className={style.sellerDashboard__new_request_item_column_1}>
-                                                            <div className={style.sellerDashboard__new_request_item_column_photo}>
-                                                                <Icon.ImgPlaceholder
-                                                                    width={"100%"}
-                                                                    height={"100%"}
-                                                                />
-                                                            </div>
-                                                            <div className={style.sellerDashboard__new_request_item_column_title}>
-                                                                <h1>Luex Dacha Premium</h1>
-                                                                <div className={style.sellerDashboard__new_request_item_column_rating}>
-                                                                    <p>sadasdasd </p>
-                                                                    <Score score={3}/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className={style.sellerDashboard__new_request_item_column_2}>
-                                                            <div className={style.sellerDashboard__new_request_item_column_2_day}>
-                                                                <p><Icon.Month/>Mon 05/12</p>
-                                                                <p><Icon.Month/>Mon 05/12</p>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className={style.sellerDashboard__new_request_item_column_price}>
-                                                            <h1>Цена:</h1>
-                                                            <h1>200.000 Сум</h1>
-                                                        </div>
-
-                                                        <div className={style.sellerDashboard__new_request_item_column_3}>
-                                                            <div className={style.sellerDashboard__new_request_item_column_3_buttons}>
-                                                                <button onClick={() => acceptRequest(item.id)}>Принять</button>
-                                                                <button onClick={() => denyRequest(item.id)}>Отказать</button>
-                                                            </div>
-                                                        </div>
+                                const matchingDachas = dacha.filter(dachaItem => item?.accommodation_id === dachaItem.id);
+                                if (matchingDachas.length > 0) {
+                                    const matchingDacha = matchingDachas[0];
+                                    const currentPhotoUrl = photoUrls.find((_, index) => index === dacha.indexOf(matchingDacha));
+                                    const currentClient = client.find(clientItem => clientItem.id === item.customer_id);
+                                    return (
+                                        <div className={style.sellerDashboard__new_request_item} key={item.id}>
+                                            <div className={style.sellerDashboard__new_request_item_column_1}>
+                                                <div className={style.sellerDashboard__new_request_item_column_photo}>
+                                                    {currentPhotoUrl?.length > 0 ? (
+                                                        <img
+                                                            src={`https://visitca.travel/api${currentPhotoUrl[0]}/?token=${token}`}
+                                                            alt={matchingDacha?.title}
+                                                            style={{objectFit: 'cover'}}
+                                                        />
+                                                    ) : (
+                                                        <Icon.ImgPlaceholder
+                                                            width={"100%"}
+                                                            height={"100%"}
+                                                        />
+                                                    )}
+                                                </div>
+                                                <div className={style.sellerDashboard__new_request_item_column_title}>
+                                                    <h1>{matchingDacha.title}</h1>
+                                                    <div
+                                                        className={style.sellerDashboard__new_request_item_column_rating}>
+                                                        <p>{currentClient?.username}</p>
+                                                        <Score score={matchingDacha.rating}/>
                                                     </div>
-                                                )
-                                            }
-                                        })}
-
-
-
-                                    </>
-                                );
+                                                </div>
+                                            </div>
+                                            <div className={style.sellerDashboard__new_request_item_column_2}>
+                                                <div className={style.sellerDashboard__new_request_item_column_2_day}>
+                                                    <p><Icon.Month/>{formatDate(item?.start_day)}</p>
+                                                    <p><Icon.Month/>{formatDate(item?.end_day)}</p>
+                                                </div>
+                                            </div>
+                                            <div className={style.sellerDashboard__new_request_item_column_price}>
+                                                <h1>Цена:</h1>
+                                                <h1>{item.requested_price} {matchingDacha.price_type}</h1>
+                                            </div>
+                                            <div className={style.sellerDashboard__new_request_item_column_3}>
+                                                <div
+                                                    className={style.sellerDashboard__new_request_item_column_3_buttons}>
+                                                    <button onClick={() => acceptRequest(item.id)}>Принять</button>
+                                                    <button onClick={() => denyRequest(item.id)}>Отказать</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                }
                             }
-                        }) :
-                        <div className={style.SellerDashboardNoData}>
-                            <Icon.NoDocuments/>
-                            <p>На данный момент ничего нету</p>
-                        </div>
-                    }
-                </> }
-
+                        }) : (
+                            <div className={style.SellerDashboardNoData}>
+                                <Icon.NoDocuments/>
+                                <p>На данный момент ничего нету</p>
+                            </div>
+                        )
+                )}
             </div>
         </div>
     );
 };
 
 export default RequestsPage;
+

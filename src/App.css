@@ -16,3 +16,25 @@ a{
     padding: 0 10px;
     margin: 0 auto;
 }
+.react-calendar__navigation__next2-button , .react-calendar__navigation__prev2-button{
+    display: none;
+}
+.react-calendar__navigation__label{
+    font-family: "Montserrat", sans-serif !important;
+    font-weight: 700;
+    font-size: 18px;
+    color: #292D32 !important;
+}
+.react-calendar__month-view__weekdays{
+    font-size: 12px !important;
+    color: #292D32 !important;
+    font-weight: 500 !important;
+}
+abbr{
+    text-decoration: none!important;
+}
+.react-calendar__tile--active , .react-calendar__tile--hasActive{
+    background: #292D32 !important;
+    border-radius: 50%;
+    color: white !important;
+}

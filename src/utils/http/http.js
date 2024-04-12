@@ -53,6 +53,8 @@ $authHost.interceptors.request.use(async (config) => {
     config.headers.Authorization = `Bearer ${authToken}`;
     return config;
 });
+
+
 $authHost.interceptors.response.use(
     (response) => response,
     async (error) => {
@@ -72,7 +74,7 @@ $authHost.interceptors.response.use(
 $host.interceptors.response.use(
     (response) => response,
     async (error) => {
-        if (error.response?.status === 404 ) {
+        if (error.response?.status === 404) {
             window.localStorage.clear()
             window.location.reload()
         }
@@ -80,6 +82,6 @@ $host.interceptors.response.use(
     }
 );
 
-setInterval(RefreshToken, 60 * 20 * 1000    );
+setInterval(RefreshToken, 60 * 20 * 1000);
 
-export { $authHost, $host, RefreshToken };
+export {$authHost, $host, RefreshToken};

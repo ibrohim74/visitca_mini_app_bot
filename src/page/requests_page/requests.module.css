@@ -53,8 +53,8 @@
 }
 
 .sellerDashboard__new_request_item_column_photo {
-    height: 100px;
-    width: 100px;
+    height: 96px;
+    width: 50%;
     margin-right: 15px;
 }
 
