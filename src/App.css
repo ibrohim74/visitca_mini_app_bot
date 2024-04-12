@@ -1,40 +1,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-body{
+body {
     background: white;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
 }
-a{
+
+a {
     text-decoration: none !important;
 }
-.container{
+
+.container {
 
     max-width: 750px;
     padding: 0 10px;
     margin: 0 auto;
 }
-.react-calendar__navigation__next2-button , .react-calendar__navigation__prev2-button{
-    display: none;
+
+.fc-toolbar-chunk button:nth-child(2), .fc-event-time {
+    display: none
 }
-.react-calendar__navigation__label{
-    font-family: "Montserrat", sans-serif !important;
-    font-weight: 700;
-    font-size: 18px;
-    color: #292D32 !important;
+
+.fc-direction-ltr {
+    width: 100%;
 }
-.react-calendar__month-view__weekdays{
-    font-size: 12px !important;
-    color: #292D32 !important;
-    font-weight: 500 !important;
+
+.fc .fc-daygrid-day-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
-abbr{
-    text-decoration: none!important;
+
+.fc-theme-standard td, table, .fc-theme-standard td {
+    border: none !important;
+
 }
-.react-calendar__tile--active , .react-calendar__tile--hasActive{
-    background: #292D32 !important;
-    border-radius: 50%;
+.fc .fc-button-primary{
+    background: none!important;
+    border: none!important;
+    outline: none!important;
+}
+.fc-icon-chevron-right::before{
+    content: url("./component/icons/next.svg");
+}.fc-icon-chevron-left::before{
+    content: url("./component/icons/prev.svg");
+}
+.fc .fc-button-primary:focus{box-shadow: none!important;}
+.fc-daygrid-event {
+    z-index: -10 !important;
     color: white !important;
+    padding: 5px;
+}
+
+.fc-event-start {
+    border: none !important;
+    border-bottom-left-radius: 300px;
+    border-top-left-radius: 300px;
+}
+.fc-event-end {
+    border: none !important;
+    border-bottom-right-radius: 300px;
+    border-top-right-radius: 300px;
 }
