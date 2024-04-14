@@ -101,3 +101,67 @@
 
 .favorite_item_rating {
 }
+
+
+/*item page*/
+
+
+.favorite_itemPage_title{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+}
+
+.favorite_itemPage_title_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.favorite_itemPage_title_left{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.favorite_itemPage_title_left h1 , .favorite_itemPage_title_right h1{
+    font-size: 18px;
+}
+.favorite_itemPage_title_left p{
+    font-size: 14px;
+    color: #BABABA;
+}
+.favorite_itemPage_title_right{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+}
+.favorite_itemPage_header_title p{
+    margin: 15px;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 400;
+}
+.calendar{
+
+}
+
+.favorite_itemPage_button{
+    width: 100%;
+    padding: 16px 0;
+    background: #292D32;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin: 20px 0 13vh 0;
+}

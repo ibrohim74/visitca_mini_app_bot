@@ -73,9 +73,14 @@ a {
     height: 300px;
     width: 100%;
 }
+.ant-modal-footer{display: none !important}
 
 .SellerDashboardNoData p {
     font-size: 16px;
     font-weight: 400;
     color: #A6A6A6;
+}
+
+.ant-picker-dropdown{
+    inset: 295.333px auto auto -4.667px !important;
 }

@@ -15,5 +15,6 @@ export const STAT_PAGE = '/stat/';
 
 export const BOOKING_USER = `/bookingsUser/`
 export const FAVORITES = `/favorites/`
+export const BACK_FAVORITES = `/favorites/?token=${token}`
 export const FAVORITES_ITEM_PAGE = `/favorites/:id/`;
 export const STORE = `/store/`

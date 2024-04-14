@@ -76,7 +76,7 @@ const BookingItemPage = () => {
                 <Calendar
                     dachaId={id}
                     setEvents={() => {
-                    }} // Calendar komponenti bu özellik kullanmıyor
+                    }}
                 />
             </div>
 

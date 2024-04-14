@@ -1,4 +1,4 @@
-import {$authHost} from "../../../utils/http/http";
+import {$authHost, $host} from "../../../utils/http/http";
 import {jwtDecode} from "jwt-decode";
 const urlParams = new URLSearchParams(window.location.search);
 
@@ -17,6 +17,15 @@ export const GetFavoriteAPI = async ()=>{
         const JWT = jwtDecode(urlParams.get('token'))
         const res = await $authHost.get(`user/${JWT.userId}/featured`)
         console.log(res)
+        return res
+    }catch (e){
+        console.log(e)
+    }
+}
+
+export const GetBookingByAnnId = async (id)=>{
+    try{
+        const res = $host.get(`/dacha/${id}/bookings`)
         return res
     }catch (e){
         console.log(e)

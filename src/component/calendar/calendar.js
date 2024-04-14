@@ -4,8 +4,9 @@ import FullCalendar from "@fullcalendar/react";
 import { jwtDecode } from "jwt-decode";
 import { $authHost } from "../../utils/http/http";
 import { Icon } from "../icons/icon";
+import isEqual from 'lodash/isEqual';
 
-const Calendar = ({ dachaId, setEvents }) => {
+const Calendar = ({ dachaId, setEvents , events }) => {
     const [formattedEvents, setFormattedEvents] = useState([]);
     const [dataEvents,  setDataEvents] = useState([]);
     const JWT = jwtDecode(new URLSearchParams(window.location.search).get('token'));
@@ -21,21 +22,22 @@ const Calendar = ({ dachaId, setEvents }) => {
             console.log(e);
         }
     };
+    useEffect(() => {
+            setDataEvents(events);
+    }, [events?.length]);
 
-    const fetchData = async () => {
-        const formattedData = await Promise.all(dataEvents?.map(async (event) => {
-            return {
-                id: event?.id,
-                start: new Date(event?.start_day),
-                end: new Date(event?.end_day),
-                backgroundColor: 'lightgreen',
-            };
-        }));
-        setFormattedEvents(formattedData);
-    };
+
+
+
 
     useEffect(() => {
-        fetchData();
+        const formattedData = dataEvents?.map(event => ({
+            id: event.id,
+            start: new Date(event.start_day),
+            end: new Date(event.end_day),
+            backgroundColor: 'lightgreen',
+        }));
+        setFormattedEvents(formattedData);
     }, [dataEvents]);
 
     useEffect(() => {
@@ -56,10 +58,12 @@ const Calendar = ({ dachaId, setEvents }) => {
             selectable={false}
             selectMirror={false}
             locale={'ru'}
-            dayMaxEvents={true}
+            dayMaxEvents={false}
             weekends={true}
             events={formattedEvents}
         />
+
+
     );
 };
 
