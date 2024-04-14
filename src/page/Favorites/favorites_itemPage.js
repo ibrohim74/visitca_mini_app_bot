@@ -138,6 +138,8 @@ const FavoritesItemPage = () => {
                         onChange={onChange}
                         format="YYYY-MM-DD HH:mm:ss"
                         disabledDate={disabledDate}
+                        inputReadOnly={true} // Bu qatorni qo'llab-quvvatlash
+                        keyboard={false} // Bu klaviyatura chiqmasin
                     />
                 </Space>
 
