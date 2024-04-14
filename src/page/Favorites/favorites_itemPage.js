@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {GetAnnouncementById} from "../bookings_page/API/bookingAPI";
-import {Button, DatePicker, Modal, Space} from "antd";
+import {Button, DatePicker, Input, Modal, Space} from "antd";
 import {GetBookingByAnnId} from "./API/favoriteAPI";
 import Header from "../../component/header/header";
 import HeaderPage from "../../component/header_page/headerPage";
@@ -15,7 +15,9 @@ const FavoritesItemPage = () => {
     const [dacha, setDacha] = useState({})
     const [bookings, setBookings] = useState([])
     const [events, setEvents] = useState([])
-    const [initialState, setInitialState] = useState([])
+    const [initialState, setInitialState] = useState({
+        requested_price: 0
+    })
     const [errorNotification, setErrorNotification] = useState([])
     const {id} = useParams();
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -93,7 +95,7 @@ const FavoritesItemPage = () => {
             }
         })
     }, [id])
-    console.log(bookings)
+    console.log(initialState)
 
     return (
         <div className={'container'}>
@@ -130,7 +132,8 @@ const FavoritesItemPage = () => {
                        alignItems: 'center'
                    }}
             >
-                <Space direction="vertical" size={12}>
+                <div className={style.favorite_itemPage_input}>
+                    <p>время заселения</p>
                     <RangePicker
                         showTime={{
                             format: 'HH:mm',
@@ -141,8 +144,65 @@ const FavoritesItemPage = () => {
                         inputReadOnly={true} // Bu qatorni qo'llab-quvvatlash
                         keyboard={false} // Bu klaviyatura chiqmasin
                     />
-                </Space>
+                </div>
 
+                <div className={style.favorite_itemPage_input}>
+                    <p>сумма, которую вы хотите предложить</p>
+                    <Input value={initialState?.requested_price
+                        ?.toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
+
+                           onChange={(e) => {
+                               const cleanedValue = e.target.value.replace(/\s/g, "");
+                               setInitialState({
+                                   ...initialState,
+                                   requested_price: cleanedValue !== "" ? parseInt(cleanedValue) : 0,
+                               });
+                           }}
+                           onBlur={() => {
+                               if (!initialState.requested_price || isNaN(initialState.requested_price)) {
+                                   setInitialState({
+                                       ...initialState,
+                                       requested_price: 0,
+                                   });
+                               }
+                           }}/>
+                </div>
+                <div className={style.favorite_itemPage_input}>
+                    <p>количество взрослых</p>
+                    <Input type={'number'} onChange={e=>setInitialState({...initialState , adults:parseInt(e.target.value)})}/>
+                </div>
+                <div className={style.favorite_itemPage_input}>
+                    <p>количество дитей</p>
+                    <Input type={'number'} onChange={e=>setInitialState({...initialState , children:parseInt(e.target.value)})}/>
+                </div>
+                <div className={style.favorite_itemPage_input}>
+                    <p>Контактная информация</p>
+                    <Input   type="text"
+                             placeholder={"Введите номер телефона" }
+                             value={initialState?.contacts}
+                             onChange={e => {
+                                 const formattedValue = e.target.value.replace(/\D/g, ''); // faqat raqamlarni qabul qilish
+                                 let formattedNumber = '+998';
+                                 if (formattedValue.length > 3) {
+                                     formattedNumber += ' ' + formattedValue.substring(3, 5);
+                                 }
+                                 if (formattedValue.length > 5) {
+                                     formattedNumber += ' ' + formattedValue.substring(5, 8);
+                                 }
+                                 if (formattedValue.length > 8) {
+                                     formattedNumber += ' ' + formattedValue.substring(8, 10);
+                                 }
+                                 if (formattedValue.length > 10) {
+                                     formattedNumber += ' ' + formattedValue.substring(10, 12);
+                                 }
+                                 setInitialState({...initialState, contacts: formattedNumber});
+                             }}/>
+                </div>
+
+                <div className={style.favorite_itemPage_button} style={{margin:'20px 0 0 0'}}>
+                    Бронировать
+                </div>
             </Modal>
             <Footer/>
         </div>
