@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {GetAnnouncementById} from "../bookings_page/API/bookingAPI";
-import {Button, DatePicker, Input, Modal, Space} from "antd";
-import {GetBookingByAnnId} from "./API/favoriteAPI";
+import {Button, DatePicker, Input, message, Modal, Space} from "antd";
+import {CreateRequestAPI, GetBookingByAnnId} from "./API/favoriteAPI";
 import Header from "../../component/header/header";
 import HeaderPage from "../../component/header_page/headerPage";
 import {BACK_BOOKING, BACK_FAVORITES} from "../../utils/consts";
@@ -15,11 +15,14 @@ const FavoritesItemPage = () => {
     const [dacha, setDacha] = useState({})
     const [bookings, setBookings] = useState([])
     const [events, setEvents] = useState([])
+    const {id} = useParams();
     const [initialState, setInitialState] = useState({
-        requested_price: 0
+        requested_price: 0,
+        accommodation_id:parseInt(id),
+        accommodation_type:'dacha'
     })
     const [errorNotification, setErrorNotification] = useState([])
-    const {id} = useParams();
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const {RangePicker} = DatePicker;
 
@@ -82,6 +85,21 @@ const FavoritesItemPage = () => {
             setInitialState({...initialState, start_day: "", end_day: ""});
         }
     };
+
+
+    const createRequest = async ()=>{
+        try {
+           await CreateRequestAPI(initialState).then(r => {
+                if (r?.status === 200){
+                    message.success("success")
+                    setIsModalOpen(false)
+                }
+            })
+        }catch (e){
+            message.error(e?.response?.data?.detail)
+        }
+
+    }
     useEffect(() => {
         GetAnnouncementById(id).then(r => {
             if (r.status === 200) {
@@ -95,7 +113,6 @@ const FavoritesItemPage = () => {
             }
         })
     }, [id])
-    console.log(initialState)
 
     return (
         <div className={'container'}>
@@ -178,7 +195,7 @@ const FavoritesItemPage = () => {
                 </div>
                 <div className={style.favorite_itemPage_input}>
                     <p>Контактная информация</p>
-                    <Input   type="text"
+                    <Input   type="tel"
                              placeholder={"Введите номер телефона" }
                              value={initialState?.contacts}
                              onChange={e => {
@@ -200,7 +217,9 @@ const FavoritesItemPage = () => {
                              }}/>
                 </div>
 
-                <div className={style.favorite_itemPage_button} style={{margin:'20px 0 0 0'}}>
+                <div className={style.favorite_itemPage_button} style={{margin:'20px 0 0 0'}}
+                onClick={createRequest}
+                >
                     Бронировать
                 </div>
             </Modal>

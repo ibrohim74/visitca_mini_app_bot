@@ -31,3 +31,12 @@ export const GetBookingByAnnId = async (id)=>{
         console.log(e)
     }
 }
+export const CreateRequestAPI = async (data)=>{
+    try{
+        const res = $authHost.post(`/create_request`, data)
+        console.log(res)
+        return res
+    }catch (e){
+        console.log(e)
+    }
+}
