@@ -1,0 +1,111 @@
+.bookingUser_booking_list{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 13vh;
+}
+.bookingUser_booking_item{
+    width: 90%;
+    border-radius: 10px;
+    border: 1px #00000033 solid;
+    padding: 10px;
+    margin: 5px 0;
+}
+.bookingUser_booking_item_col1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.bookingUser_booking_item_col1 h1{
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+.bookingUser_booking_item_status{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #EEEFF5;
+    padding: 5px;
+    border-radius: 10px;
+    width: 70px;
+}
+.bookingUser_booking_item_status span{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px black solid;
+}
+.bookingUser_booking_item_status p{
+    font-size: 12px;
+    margin: 0;
+    font-weight: 500;
+}
+.bookingUser_booking_item_col2{
+    display: flex;
+    margin-top: 16px;
+    width: 100%;
+}
+.sellerDashboard__new_request_item_column_2_day {
+    background: #F7F8F9;
+    height: 46px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.sellerDashboard__new_request_item_column_2_day p {
+    font-size: 16px;
+    color: #292D32;
+    display: flex;
+    align-items: center;
+}
+.sellerDashboard__new_request_item_column_2_day p svg{
+    margin-right: 10px;
+}
+.sellerDashboard__new_request_item_column_2_day p:nth-child(1) {
+    margin-right: 15px;
+}
+
+.sellerDashboard__new_request_item_column_2_people {
+    width: 165px;
+    height: 46px;
+    background: #F7F8F9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 15px;
+}
+
+.bookingUser_booking_item_col3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+.bookingUser_booking_item_col3 h1{
+    font-size: 16px;
+    font-weight: 700;
+    color: #292D32;
+}
+.bookingUser_booking_item_col3_i1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.bookingUser_booking_item_col3_i2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}

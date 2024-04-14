@@ -6,7 +6,7 @@ import {GetCurrentUser} from "./API/homePageAPI";
 import {Icon} from "../../component/icons/icon";
 import Footer from "../../component/footer/footer";
 import {Link, useParams} from "react-router-dom";
-import {BOOKINGS_PAGE, REQUESTS_PAGE, STAT_PAGE} from "../../utils/consts";
+import {BOOKING_USER, BOOKINGS_PAGE, FAVORITES, REQUESTS_PAGE, STAT_PAGE, STORE} from "../../utils/consts";
 
 const HomePage = () => {
     const [user, setUser] = useState()
@@ -41,8 +41,8 @@ const HomePage = () => {
                     <p>{user?.phone_number}</p>
                 </div>}
             </div>
+            {user?.role === 'seller' && <div className={style.section_homePage_buttons}>
 
-            <div className={style.section_homePage_buttons}>
                 <Link to={REQUESTS_PAGE + `?token=${token}`} className={style.section_homePage_buttons_item}>
                     Заявки
                 </Link>
@@ -52,7 +52,20 @@ const HomePage = () => {
                 <Link to={STAT_PAGE + `?token=${token}`} className={style.section_homePage_buttons_item}>
                     Статистика
                 </Link>
-            </div>
+            </div>}
+            {user?.role === 'user' && <div className={style.section_homePage_buttons}>
+
+                <Link to={BOOKING_USER + `?token=${token}`} className={style.section_homePage_buttons_item}>
+                    Бронированые
+                </Link>
+                <Link to={FAVORITES + `?token=${token}`} className={style.section_homePage_buttons_item}>
+                    Избранные
+                </Link>
+                <Link to={STORE + `?token=${token}`} className={style.section_homePage_buttons_item}>
+                    История
+                </Link>
+            </div>}
+
 
             <Footer/>
         </div>

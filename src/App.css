@@ -65,3 +65,17 @@ a {
     border-bottom-right-radius: 300px;
     border-top-right-radius: 300px;
 }
+.SellerDashboardNoData {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 300px;
+    width: 100%;
+}
+
+.SellerDashboardNoData p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #A6A6A6;
+}

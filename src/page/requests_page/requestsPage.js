@@ -119,7 +119,13 @@ const RequestsPage = () => {
                                                         />
                                                     )}
                                                 </div>
-                                                <div className={style.sellerDashboard__new_request_item_column_title}>
+                                                <div className={style.sellerDashboard__new_request_item_column_title}
+                                                     style={{
+                                                         overflow: "hidden",
+                                                         textOverflow: "ellipsis",
+                                                         whiteSpace: 'nowrap'
+                                                     }}
+                                                >
                                                     <h1>{matchingDacha.title}</h1>
                                                     <div
                                                         className={style.sellerDashboard__new_request_item_column_rating}>
