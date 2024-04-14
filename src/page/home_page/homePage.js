@@ -19,6 +19,7 @@ const HomePage = () => {
     }, [])
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get('token');
+    console.log(user)
     return (
         <div className={'container'} style={{
             display: 'flex', justifyContent: "center", alignItems: 'center',
@@ -28,7 +29,7 @@ const HomePage = () => {
             <div className={style.section_profile}>
                 <div className={style.section_profile__photo}>
                     {user?.image_path ?
-                        <img src={`https://visitca.travel/api${user?.image_path}`} alt={user?.image_path}/>
+                        <img src={`https://visitca.travel/api${user?.image_path}?token=${token}`} alt={user?.image_path}/>
                         :
                         <Icon.UserDefolt/>
                     }

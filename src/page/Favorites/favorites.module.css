@@ -8,6 +8,7 @@
 
 .favorite_item {
     width: 90%;
+    margin: 5px 0;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -42,6 +43,9 @@
     font-weight: 400;
     width: 100%;
     margin: 10px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-line;
 }
 
 .favorite_item_left h2 {
@@ -68,6 +72,7 @@
     height: 44px;
     background: #E9E9E9;
     border-radius: 10px;
+    z-index: 13;
 }
 
 .favorite_item_stat {
@@ -77,16 +82,19 @@
     width: 100%;
     flex-direction: column;
     margin: 10px 0;
+    color: #292D32;
 }
 
 .favorite_item_stat h1, p {
     margin: 0;
 }
-.favorite_item_stat h1{
+
+.favorite_item_stat h1 {
     font-size: 16px;
     font-weight: 700;
 }
-.favorite_item_stat p{
+
+.favorite_item_stat p {
     font-size: 10px;
     font-weight: 400;
 }

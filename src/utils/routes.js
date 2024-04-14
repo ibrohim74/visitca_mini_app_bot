@@ -2,7 +2,7 @@ import {
     BOOKING_USER,
     BOOKINGS_ITEM_PAGE,
     BOOKINGS_PAGE,
-    FAVORITES,
+    FAVORITES, FAVORITES_ITEM_PAGE,
     HOME_PAGE,
     REQUESTS_PAGE,
     STAT_PAGE, STORE
@@ -15,6 +15,7 @@ import BookingItemPage from "../page/bookings_page/booking_item_page";
 import BookingUser from "../page/bookings_user/bookingUser";
 import Favorites from "../page/Favorites/favorites";
 import Store from "../page/store/store";
+import Favorites_itemPage from "../page/Favorites/favorites_itemPage";
 
 export const BOT =[
     {
@@ -51,5 +52,9 @@ export const BOT =[
     {
         path:STORE,
         component:<Store/>
+    },
+    {
+        path:FAVORITES_ITEM_PAGE,
+        component:<Favorites_itemPage/>
     },
 ]

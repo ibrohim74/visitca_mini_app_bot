@@ -117,7 +117,7 @@ const BookingsPage = () => {
                             })}
                         </>
                     ) : (
-                        <div className={style.SellerDashboardNoData}>
+                        <div className={'SellerDashboardNoData'}>
                             <Icon.NoDocuments />
                             <p>На данный момент ничего нету</p>
                         </div>
