@@ -1,0 +1,38 @@
+.store_tab {
+    width: 95%;
+    background: #EEEFF5;
+    height: 45px;
+    border-radius: 16px;
+    padding: 2px;
+    display: flex;
+    margin-top: 10px;
+}
+
+.store_tab_1 {
+    width: 50%;
+    background: transparent;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+}
+
+.store_tab_2 {
+    width: 50%;
+    background: transparent;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+}
+
+.store_content{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

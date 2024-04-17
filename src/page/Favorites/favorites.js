@@ -71,7 +71,7 @@ const Favorites = () => {
     return (
         <div className={'container'}>
             <Header/>
-            <HeaderPage url={BACK_HOME} title={'Избранные'}/>
+            <HeaderPage url={BACK_HOME} title={'Избранные'} h1Style={{padding: "0 107px"}}/>
             {loading && <div>Loading ...</div>}
             <div className={style.favorite_list}>
                 {!loading && favoriteList?.length > 0 ? favoriteList.map((item, index) => {

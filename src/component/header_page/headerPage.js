@@ -10,11 +10,7 @@ const HeaderPage = (props) => {
                 <Icon.ArrowLeft/>
             </Link>
             <div className={style.headerPage_title}>
-                <h1  style={{
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    whiteSpace: 'nowrap'
-                }}>{props?.title}</h1>
+                <h1  style={props.h1Style ? props.h1Style : {}}>{props?.title}</h1>
             </div>
         </div>
     );

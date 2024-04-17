@@ -27,13 +27,18 @@ const BookingUser = () => {
     useEffect(() => {
         const fetchBookingData = async () => {
             setLoading(true)
-            const bookingResponse = await GetUserBookingAPI();
-            if (bookingResponse.status === 200) {
-                setBooking(bookingResponse.data);
-                const annIds = bookingResponse.data.map(({ accommodation_id }) => accommodation_id);
-                setAnnouncementID(annIds);
-                setLoading(false)
+            try {
+                const bookingResponse = await GetUserBookingAPI();
+                if (bookingResponse.status === 200) {
+                    setBooking(bookingResponse.data);
+                    const annIds = bookingResponse.data.map(({ accommodation_id }) => accommodation_id);
+                    setAnnouncementID(annIds);
+                    setLoading(false)
+                }
+            }catch (e){
+                console.log(e)
             }
+
         };
 
         fetchBookingData();
