@@ -19,20 +19,21 @@ a {
     margin: 0 auto;
 }
 
-.fc-toolbar-chunk button:nth-child(2), .fc-event-time {
-    display: none
-}
+/*.fc-toolbar-chunk button:nth-child(2), .fc-event-time {*/
+/*    display: none*/
+/*}*/
 
 .fc-direction-ltr {
     width: 100%;
+    height: 475px;
 }
 
-.fc .fc-daygrid-day-frame {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/*.fc .fc-daygrid-day-frame {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
 
-}
+/*}*/
 
 .fc-theme-standard td, table, .fc-theme-standard td {
     border: none !important;
@@ -49,11 +50,11 @@ a {
     content: url("./component/icons/prev.svg");
 }
 .fc .fc-button-primary:focus{box-shadow: none!important;}
-.fc-daygrid-event {
-    z-index: -10 !important;
-    color: white !important;
-    padding: 5px;
-}
+/*.fc-daygrid-event {*/
+/*    z-index: -10 !important;*/
+/*    color: white !important;*/
+/*    padding: 5px;*/
+/*}*/
 
 .fc-event-start {
     border: none !important;
@@ -83,4 +84,12 @@ a {
 
 .ant-picker-dropdown{
     inset: 295.333px auto auto -4.667px !important;
+}
+
+.fc-daygrid-event-harness-abs{
+    /*top: 13px !important;*/
+}
+
+.fc-event-time{
+    color: #292D32!important;
 }

@@ -5,7 +5,7 @@ import { jwtDecode } from "jwt-decode";
 import { $authHost } from "../../utils/http/http";
 import { Icon } from "../icons/icon";
 import isEqual from 'lodash/isEqual';
-
+import style from './calendar.module.css'
 const Calendar = ({ dachaId, setEvents , events }) => {
     const [formattedEvents, setFormattedEvents] = useState([]);
     const [dataEvents,  setDataEvents] = useState([]);
@@ -40,6 +40,7 @@ const Calendar = ({ dachaId, setEvents , events }) => {
         setFormattedEvents(formattedData);
     }, [dataEvents]);
 
+
     useEffect(() => {
         getCalendarEvents();
     }, [dachaId]);
@@ -61,6 +62,7 @@ const Calendar = ({ dachaId, setEvents , events }) => {
             dayMaxEvents={false}
             weekends={true}
             events={formattedEvents}
+            eventClassNames={style.calendar_events}
         />
 
 
