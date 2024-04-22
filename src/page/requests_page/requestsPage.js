@@ -102,6 +102,7 @@ const RequestsPage = () => {
                                     const matchingDacha = matchingDachas[0];
                                     const currentPhotoUrl = photoUrls.find((_, index) => index === dacha.indexOf(matchingDacha));
                                     const currentClient = client.find(clientItem => clientItem.id === item.customer_id);
+                                    console.log(currentPhotoUrl)
                                     return (
                                         <div className={style.sellerDashboard__new_request_item} key={item.id}>
                                             <div className={style.sellerDashboard__new_request_item_column_1}>

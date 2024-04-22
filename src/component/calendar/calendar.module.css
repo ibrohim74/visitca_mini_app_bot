@@ -1,3 +1,63 @@
-.calendar_events{
+.calendar_events {
     color: #292D32 !important;
+}
+
+.calendar_modal , .ant-modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.calendar_modal_icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FF4141;
+}
+
+.calendar_modal_textContent {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.calendar_modal_textContent h1{
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #292D32;
+}
+.calendar_modal_textContent p{
+    font-size: 14px;
+    font-weight: 400;
+    color: #292D32;
+}
+
+.calendar_modal_btns {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+.calendar_modal_btns button:nth-child(1){
+    width: 152px;
+    height: 40px;
+    background: #F7F8F9;
+    outline: none;
+    border: 1px #B0B7BA33 solid;
+}
+.calendar_modal_btns button:nth-child(2){
+    width: 152px;
+    margin-left: 20px;
+    height: 40px;
+    background: #FFEFEF;
+    outline: none;
+    border: 1px #FF4141 solid;
 }

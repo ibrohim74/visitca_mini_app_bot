@@ -93,3 +93,9 @@ a {
 .fc-event-time{
     color: #292D32!important;
 }
+ .ant-modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

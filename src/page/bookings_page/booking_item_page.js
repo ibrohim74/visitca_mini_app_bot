@@ -63,7 +63,8 @@ const BookingItemPage = () => {
 
         getClientBooking();
     }, [bookings]);
-    console.log(bookings)
+
+    console.log(clients)
     return (
         <div className={'container'}>
             <Header/>
@@ -75,8 +76,7 @@ const BookingItemPage = () => {
             <div className={style.booking_itemPage_calendarBox}>
                 <Calendar
                     dachaId={id}
-                    setEvents={() => {
-                    }}
+                    setEvents={() => {}}
                 />
             </div>
 
